@@ -14,11 +14,7 @@
     ],
   
     "parser": "@babel/eslint-parser",
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
-  
-    "plugins": ["prettier"],
+    "plugins": ["@babel"],
     "rules": {
       "indent": ["error", 2, { "SwitchCase": 1 }],
       "prettier/prettier": "error",

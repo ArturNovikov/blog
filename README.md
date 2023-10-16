@@ -38,6 +38,7 @@ blog/
 │   ├── App.js
 │   ├── index.js
 │   └── ...
+├── .babelrc
 ├── .eslintrc.json
 ├── .gitignore
 ├── .prettierrc
