@@ -1,0 +1,8 @@
+@import '../../styles/global.scss';
+
+.article {
+    width: 941px;
+    height: 140px;
+    @include article-style;
+}
+

@@ -1,54 +1,64 @@
 {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "ignorePatterns": ["node_modules", "dist", "build"],
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:prettier/recommended",
-      "plugin:import/errors",
-      "plugin:import/warnings",
-      "prettier"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "ignorePatterns": ["node_modules", "dist", "build", "babel.config.js"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "prettier"
+  ],
+
+  "parser": "@babel/eslint-parser",
+  "plugins": ["@babel"],
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "prettier/prettier": "error",
+    "linebreak-style": [0, "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0,
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "import/order": [
+      2,
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "always"
+      }
     ],
-  
-    "parser": "@babel/eslint-parser",
-    "plugins": ["@babel"],
-    "rules": {
-      "indent": ["error", 2, { "SwitchCase": 1 }],
-      "prettier/prettier": "error",
-      "linebreak-style": [0, "unix"],
-      "quotes": ["error", "single"],
-      "semi": ["error", "never"],
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": 0,
-      "import/no-unresolved": [2, { "caseSensitive": false }],
-      "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-      "import/order": [
-        2,
-        {
-          "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
-          "newlines-between": "always"
-        }
-      ],
-      "strict": 0,
-      "react/jsx-props-no-spreading": "off",
-      "react/function-component-definition": [
-        "error",
-        {
-          "namedComponents": ["function-declaration", "arrow-function"],
-          "unnamedComponents": "arrow-function"
-        }
-      ],
-      "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "strict": 0,
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": ["function-declaration", "arrow-function"],
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "extensions": [".js", ".jsx", ".ts", ".tsx"],
-          "moduleDirectory": ["node_modules", "src/"]
-        }
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
       }
     }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module",
+    "ecmaVersion": 2020
   }
+}
