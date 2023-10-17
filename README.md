@@ -38,6 +38,10 @@ blog/
 │ │ │ │ ├── articleAuthor.js
 │ │ │ │ ├── articleAuthor.module.scss
 │ │ │ │ └── index.js
+│ │ │ ├── LikeIcon/
+│ │ │ │ ├── likeIcon.js
+│ │ │ │ ├── likeIcon.module.scss
+│ │ │ │ └── index.js
 │ │ ├── Header/
 │ │ │ ├── header.js
 │ │ │ ├── header.module.scss

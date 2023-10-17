@@ -1,0 +1,27 @@
+@import '../../styles/global.scss';
+
+.articleAuthor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-top: 15px;
+    padding-right: 15px;
+    .authorName, .authorDate {
+        margin-right: 12px;
+    }
+    .authorName {
+        @include typography-for-header-title;
+    }
+    .authorDate {
+        @include typography-for-date;
+    }
+    .authorImage {
+        flex-shrink: 0;
+        margin-left: auto;
+        width: 46px;
+        height: 46px;
+        position: relative;
+        top: -210%;
+    }
+}
+

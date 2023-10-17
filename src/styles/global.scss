@@ -1,11 +1,11 @@
-
-
 $backgroundColor: #EBEEF3;
 $backgroundColorHeader:#FFF;
 $headingColor:rgba(0, 0, 0, 0.85);
 $successColor: #52C41A;
 $backgroundColorBase: #FFF;
 $infoColor: #1890FF;
+$textColorSecondary: rgba(0, 0, 0, 0.50);
+$textColor: rgba(0, 0, 0, 0.75);
 
 @mixin flex-align-justify-center {
     display: flex;
@@ -35,9 +35,36 @@ $infoColor: #1890FF;
 
 @mixin typography-for-article-header {
     color: $infoColor;
-    font-family: Inter UI;
+    font-family: 'Inter UI', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
+}
+
+@mixin typography-for-tags {
+    color: $textColorSecondary;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@mixin typography-for-content {
+    color: $textColor;
+    font-family: 'Inter UI', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+@mixin typography-for-date {
+    color: $textColorSecondary;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
 }
