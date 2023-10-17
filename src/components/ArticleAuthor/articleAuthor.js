@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './articleAuthor.scss';
+import styles from './articleAuthor.module.scss';
 
 const ArticleAuthor = ({ author, date }) => {
   return (

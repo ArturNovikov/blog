@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './articleContent.scss';
+import styles from './articleContent.module.scss';
 
 const ArticleContent = () => {
   return (

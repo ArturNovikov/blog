@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './articleTagList.scss';
+import styles from './articleTagList.module.scss';
 
 const ArticleTagList = ({ tags }) => {
   return (

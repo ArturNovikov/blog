@@ -1,0 +1,7 @@
+@import '../../styles/global.scss';
+
+.articleHeader {
+    .articleHeader__title {
+        @include typography-for-article-header;
+    }
+}

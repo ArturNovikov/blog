@@ -5,6 +5,7 @@ $backgroundColorHeader:#FFF;
 $headingColor:rgba(0, 0, 0, 0.85);
 $successColor: #52C41A;
 $backgroundColorBase: #FFF;
+$infoColor: #1890FF;
 
 @mixin flex-align-justify-center {
     display: flex;
@@ -27,6 +28,15 @@ $backgroundColorBase: #FFF;
     color:$headingColor;
     font-family: 'Inter UI', sans-serif;
     font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+@mixin typography-for-article-header {
+    color: $infoColor;
+    font-family: Inter UI;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
