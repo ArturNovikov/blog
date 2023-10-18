@@ -7,7 +7,7 @@
     padding-top: 15px;
     padding-right: 15px;
     .authorName, .authorDate {
-        margin-right: 12px;
+        margin-right: 55px;
     }
     .authorName {
         @include typography-for-header-title;
@@ -21,7 +21,7 @@
         width: 46px;
         height: 46px;
         position: relative;
-        top: -210%;
+        top: -360%;
     }
 }
 

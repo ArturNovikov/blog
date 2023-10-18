@@ -1,9 +1,9 @@
 const BASE_URL = 'https://blog.kata.academy/api/';
 
 class ApiService {
-  async getGlobalArticles() {
+  async getGlobalArticles(pageNumber = 1) {
     try {
-      const response = await fetch(`${BASE_URL}/articles`);
+      const response = await fetch(`${BASE_URL}/articles?page=${pageNumber}`);
       const data = await response.json();
       return data;
     } catch (error) {
