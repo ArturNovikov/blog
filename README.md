@@ -26,6 +26,10 @@ blog/
 │ │ │ │ ├── articleHeader.js
 │ │ │ │ ├── articleHeader.module.scss
 │ │ │ │ └── index.js
+│ │ │ ├── ArticlesList/
+│ │ │ │ ├── articlesList.js
+│ │ │ │ ├── articlesList.module.scss
+│ │ │ │ └── index.js
 │ │ │ ├── ArticleTagList/
 │ │ │ │ ├── articleTagList.js
 │ │ │ │ ├── articleTagList.module.scss
@@ -57,16 +61,14 @@ blog/
 │ │ └── NotFound/
 │ ├── store/
 │ │ ├── actionCreators
-│ │ │ ├── action_1.js
-│ │ │ ├── action_2.js
+│ │ │ ├── fetchArticleGlobally.js
 │ │ │ └── ...
 │ │ ├── actions
-│ │ │ ├── action_1.js
-│ │ │ ├── action_2.js
+│ │ │ ├── types.js
 │ │ │ └── ...
 │ │ ├── reducers
-│ │ │ ├── reducer_1.js
-│ │ │ ├── reducer_2.js
+│ │ │ ├── articlesReducer.js
+│ │ │ ├── index.js
 │ │ │ └── ...
 │ │ ├── initialState.js
 │ │ ├── store.js
