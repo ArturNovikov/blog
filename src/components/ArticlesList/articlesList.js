@@ -46,6 +46,8 @@ const ArticlesList = ({ className }) => {
         data.articles.map((article) => (
           <Article
             key={article.slug}
+            slugKey={article.slug}
+            likes={article.favoritesCount}
             title={article.title}
             tags={article.tagList}
             author={article.author}

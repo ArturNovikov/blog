@@ -6,4 +6,7 @@
     .articleLikes__heart {
         padding-right: 5px;
     }
+    .articleLikes__count {
+        @include typography-for-content;
+    }
 }

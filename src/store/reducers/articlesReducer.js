@@ -22,6 +22,7 @@ const articleReducer = (state = initialState, action) => {
         error: null,
       };
     case FETCH_ARTICLES_GLOBALLY_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
         loading: false,

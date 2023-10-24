@@ -7,10 +7,10 @@ import ArticleAuthor from '../ArticleAuthor';
 
 import styles from './article.module.scss';
 
-const Article = ({ title, tags, author, date }) => {
+const Article = ({ title, tags, author, date, slugKey, likes }) => {
   return (
     <article className={styles.article}>
-      <ArticleHeader className={styles.articleHeader} title={title} />
+      <ArticleHeader className={styles.articleHeader} title={title} slugKey={slugKey} likes={likes} />
       <ArticleTagList className={styles.articleTagList} tags={tags} />
       <ArticleContent className={styles.articleContent} />
       <ArticleAuthor className={styles.articleAuthor} author={author} date={date} />

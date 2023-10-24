@@ -1,18 +1,20 @@
 blog/
 ├── husky/
-├── pre-commit
+│ ├── _/
+│ │ ├── .gitignore
+│ │ └── husky.sh
+│ └── pre-commit
 ├── node_modules/
-├── .bin/
-├── ...
 ├── public/
-│ ├── index.html
-│ ├── favicon.ico
-│ └── ...
+│ └── index.html
 ├── src/
 │ ├── assets/
-│ │ ├── images/
 │ │ ├── fonts/
 │ │ │ └── fonts.scss
+│ │ ├── images/
+│ │ │ ├── cat-solid.svg
+│ │ │ ├── heart 1.svg
+│ │ │ └── skull-crossbones-solid.svg
 │ ├── components/
 │ │ ├── App/
 │ │ │ ├── App.js
@@ -22,6 +24,14 @@ blog/
 │ │ │ ├── article.js
 │ │ │ ├── article.module.scss
 │ │ │ ├── index.js
+│ │ │ ├── ArticleAuthor/
+│ │ │ │ ├── articleAuthor.js
+│ │ │ │ ├── articleAuthor.module.scss
+│ │ │ │ └── index.js
+│ │ │ ├── ArticleContent/
+│ │ │ │ ├── articleContent.js
+│ │ │ │ ├── articleContent.module.scss
+│ │ │ │ └── index.js
 │ │ │ ├── ArticleHeader/
 │ │ │ │ ├── articleHeader.js
 │ │ │ │ ├── articleHeader.module.scss
@@ -34,27 +44,14 @@ blog/
 │ │ │ │ ├── articleTagList.js
 │ │ │ │ ├── articleTagList.module.scss
 │ │ │ │ └── index.js
-│ │ │ ├── ArticleContent/
-│ │ │ │ ├── articleContent.js
-│ │ │ │ ├── articleContent.module.scss
-│ │ │ │ └── index.js
-│ │ │ ├── ArticleAuthor/
-│ │ │ │ ├── articleAuthor.js
-│ │ │ │ ├── articleAuthor.module.scss
-│ │ │ │ └── index.js
-│ │ │ ├── LikeIcon/
-│ │ │ │ ├── likeIcon.js
-│ │ │ │ ├── likeIcon.module.scss
-│ │ │ │ └── index.js
 │ │ ├── Header/
 │ │ │ ├── header.js
 │ │ │ ├── header.module.scss
 │ │ │ └── index.js
-│ │ ├── ArticleList/
-│ │ ├── ArticleItem/
-│ │ ├── Pagination/
-│ │ ├── Loader/
-│ │ └── ...
+│ │ │ ├── LikeIcon/
+│ │ │ │ ├── likeIcon.js
+│ │ │ │ ├── likeIcon.module.scss
+│ │ │ │ └── index.js
 │ ├── pages/
 │ │ ├── Home/
 │ │ ├── Article/
@@ -79,16 +76,16 @@ blog/
 │ │ ├── global.scss
 │ │ └── ...
 │ ├── utils/
-│ │ ├── index.js
 │ │ ├── formatDate.js
+│ │ ├── truncateText.js
 │ │ └── ...
 │ ├── index.scss
 │ ├── index.js
 │ └── ...
-├── .babelrc
 ├── .eslintrc.json
 ├── .gitignore
 ├── .prettierrc
+├── .babel.config.js
 ├── package-lock.json
 ├── package.json
 └── README.md
