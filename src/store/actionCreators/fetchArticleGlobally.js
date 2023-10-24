@@ -26,7 +26,6 @@ export const setCurrentPage = (pageNumber) => ({
 });
 
 const apiService = new ApiService();
-
 export const fetchArticles = (pageNumber) => async (dispatch) => {
   dispatch(fetchArticlesGloballyRequest());
   try {

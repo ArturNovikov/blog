@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Pagination, ConfigProvider } from 'antd';
+import { Pagination, ConfigProvider, Spin } from 'antd';
 
 import { fetchArticles, setCurrentPage } from '../../store/actionCreators/fetchArticleGlobally';
 import Article from '../Article/article';
@@ -36,9 +36,8 @@ const ArticlesList = ({ className }) => {
     dispatch(setCurrentPage(pageNumber));
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spin size="large" className={styles.loadingSpin} />;
   if (error) return <p>Error: {error}</p>;
-  console.log(data);
   return (
     <section className={`${styles.articlesList} ${className}`}>
       {data &&
@@ -59,7 +58,7 @@ const ArticlesList = ({ className }) => {
           defaultCurrent={1}
           current={currentPage}
           onChange={handlePageChange}
-          pageSize={5}
+          pageSize={20}
           total={data.articlesCount}
           hideOnSinglePage={true}
           showSizeChanger={false}
