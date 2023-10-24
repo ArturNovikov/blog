@@ -62,7 +62,6 @@ const ArticlesList = ({ className }) => {
                     author={article.author}
                     date={article.createdAt}
                     description={article.description}
-                    body={article.body}
                   />
                 ))}
               <ConfigProvider {...configSettings}>

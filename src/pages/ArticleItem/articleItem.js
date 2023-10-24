@@ -1,8 +1,11 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
 import Article from '../../components/Article';
+
+import style from './articleItem.module.scss';
 
 const ArticleItem = () => {
   const slugID = 'article-1eh4k9';
@@ -30,7 +33,9 @@ const ArticleItem = () => {
         likes={article.favoritesCount}
         description={article.description}
       />
-      <p>{article.body}</p>;
+      <article className={style.articleBody}>
+        <ReactMarkdown>{article.body}</ReactMarkdown>
+      </article>
     </>
   );
 };
