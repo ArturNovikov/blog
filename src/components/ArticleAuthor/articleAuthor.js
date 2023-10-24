@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Spin } from 'antd';
 
 import { formatDate } from '../../utils/formatDate';
+import truncateText from '../../utils/truncateText';
 import cat from '../../assets/images/cat-solid.svg';
 
 import styles from './articleAuthor.module.scss';
@@ -12,7 +13,7 @@ const ArticleAuthor = ({ author, date }) => {
 
   return (
     <div className={styles.articleAuthor}>
-      <p className={styles.authorName}>{username}</p>
+      <p className={styles.authorName}>{truncateText(username)}</p>
       <p className={styles.authorDate}>{formatDate(date)}</p>
       {loading && <Spin className={styles.authorImage} />}
       <img

@@ -1,7 +1,7 @@
 @import '../../styles/global.scss';
 
 .article {
-    max-width: 941px;
+    width: 941px;
     height: 140px;
     @include article-style;
     padding-left: 18px;
