@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from '../Header/index';
 import ArticlesList from '../ArticlesList';
@@ -6,13 +7,14 @@ import ArticlesList from '../ArticlesList';
 import styles from './App.module.scss';
 
 const App = () => {
-  console.log('App!');
   return (
     <div className={styles.container}>
-      <Header />
-      <main>
-        <ArticlesList className={styles.articlesList} />
-      </main>
+      <Router>
+        <Header />
+        <main>
+          <ArticlesList className={styles.articlesList} />
+        </main>
+      </Router>
     </div>
   );
 };

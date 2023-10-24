@@ -55,8 +55,8 @@ blog/
 │ ├── pages/
 │ │ ├── ArticleItem/
 │ │ │ ├── articleItem.js
+│ │ │ ├── articleItem.module.scss
 │ │ │ └── index.js
-│ │ └── NotFound/
 │ ├── store/
 │ │ ├── actionCreators
 │ │ │ ├── fetchArticleGlobally.js
