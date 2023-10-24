@@ -43,10 +43,10 @@ const ArticlesList = ({ className }) => {
   return (
     <section className={`${styles.articlesList} ${className}`}>
       <Router>
-        <Route exact path="/articles/1" component={ArticleItem} />
+        <Route exact path="/articles/:slug" component={ArticleItem} />
         <Route
           exact
-          path="/articles"
+          path={['/', '/articles']}
           render={() => (
             <>
               {data &&
