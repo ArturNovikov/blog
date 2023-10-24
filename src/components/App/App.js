@@ -6,6 +6,7 @@ import ArticlesList from '../ArticlesList';
 import styles from './App.module.scss';
 
 const App = () => {
+  console.log('App!');
   return (
     <div className={styles.container}>
       <Header />

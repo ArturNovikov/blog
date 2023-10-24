@@ -53,8 +53,9 @@ blog/
 │ │ │ │ ├── likeIcon.module.scss
 │ │ │ │ └── index.js
 │ ├── pages/
-│ │ ├── Home/
-│ │ ├── Article/
+│ │ ├── ArticleItem/
+│ │ │ ├── articleItem.js
+│ │ │ └── index.js
 │ │ └── NotFound/
 │ ├── store/
 │ │ ├── actionCreators
