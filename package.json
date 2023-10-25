@@ -16,6 +16,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.47.0",
     "react-markdown": "^9.0.0",
     "react-redux": "^8.1.3",
     "react-router-dom": "^5.3.4",
@@ -64,6 +65,7 @@
     "@babel/core": "^7.23.2",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/eslint-plugin": "^7.22.10",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-syntax-jsx": "^7.22.5",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
@@ -76,11 +78,11 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "sass": "^1.69.3",
-    "svgo": "^2.8.0",
-    "husky": "^8.0.0"
+    "svgo": "^2.8.0"
   },
   "husky": {
     "hooks": {
