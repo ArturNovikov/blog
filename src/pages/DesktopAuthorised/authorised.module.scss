@@ -1,6 +1,6 @@
 @import '../../styles/global.scss';
 
-.signInContainer {
+.authorisedContainer {
   width: 380px;
   margin: 50px auto;
   padding: 20px;
@@ -57,20 +57,6 @@
       }
       &:active {
         transform: translateY(4px);
-      }
-    }
-  }
-
-  .alternative {
-    margin-top: 10px;
-    text-align: center;
-    @include typography-for-alternative-sign;
-    a {
-      @include typography-for-signIn-alternative;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
       }
     }
   }
