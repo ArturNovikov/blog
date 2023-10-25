@@ -57,6 +57,26 @@ blog/
 │ │ │ ├── articleItem.js
 │ │ │ ├── articleItem.module.scss
 │ │ │ └── index.js
+│ │ ├── DesktopAuthorised/
+│ │ │ ├── desktopAuthorised.js
+│ │ │ ├── desktopAuthorised.module.scss
+│ │ │ └── index.js
+│ │ ├── DesktopSignIn/
+│ │ │ ├── desktopSignIn.js
+│ │ │ ├── desktopSignIn.module.scss
+│ │ │ └── index.js
+│ │ ├── DesktopSignUp/
+│ │ │ ├── desktopSignUp.js
+│ │ │ ├── desktopSignUp.module.scss
+│ │ │ └── index.js
+│ │ ├── DesktopEditProfile/
+│ │ │ ├── desktopEditProfile.js
+│ │ │ ├── desktopEditProfile.module.scss
+│ │ │ └── index.js
+│ │ ├── DesktopSignUpInvalid/
+│ │ │ ├── desktopSignUpInvalid.js
+│ │ │ ├── desktopSignUpInvalid.module.scss
+│ │ │ └── index.js
 │ ├── store/
 │ │ ├── actionCreators
 │ │ │ ├── fetchArticleGlobally.js

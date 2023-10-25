@@ -30,6 +30,8 @@
             border: none;
         }
         .btnSingUp {
+            @include flex-align-justify-center;
+            justify-content: center;
             width: 109px;
             height: 51px;
             flex-shrink: 0;
@@ -38,6 +40,10 @@
             background-color: $backgroundColorHeader;
             @include typography-for-header-title;
             color: $successColor;
+            transition: transform 0.1s;
+            &:active {
+                transform: translateY(4px);
+            }
         }
     }
 }

@@ -11,7 +11,9 @@ const Header = () => {
       </Link>
       <div className={styles.authButtons}>
         <button className={styles.btnSingIn}>Sign In</button>
-        <button className={styles.btnSingUp}>Sign Up</button>
+        <Link to="/sign-up" className={styles.btnSingUp}>
+          Sign Up
+        </Link>
       </div>
     </header>
   );
