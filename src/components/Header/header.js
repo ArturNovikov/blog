@@ -10,7 +10,9 @@ const Header = () => {
         <h1 className={styles.title}>Realworld Blog</h1>
       </Link>
       <div className={styles.authButtons}>
-        <button className={styles.btnSingIn}>Sign In</button>
+        <Link to="/sign-in" className={styles.btnSingIn}>
+          Sign In
+        </Link>
         <Link to="/sign-up" className={styles.btnSingUp}>
           Sign Up
         </Link>

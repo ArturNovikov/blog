@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../Header/index';
 import ArticlesList from '../ArticlesList';
 import DesktopSignUp from '../../pages/DesktopSignUp';
+import DesktopSignIn from '../../pages/DesktopSignIn';
 
 import styles from './App.module.scss';
 
@@ -13,6 +14,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/sign-up" component={DesktopSignUp} />
+          <Route exact path="/sign-in" component={DesktopSignIn} />
           <Route path="/">
             <>
               <Header />
