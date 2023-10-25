@@ -7,43 +7,50 @@
     height: 80px;
     background-color: $backgroundColorHeader;
     margin-bottom: 20px;
+
     .title {
-        display: flex;
+        @include flex-align-justify-center;
         width: 147px;
         height: 56px;
         flex-direction: column;
         justify-content: center;
         @include typography-for-header-title;
+        transition: transform 0.3s, color 0.3s, border 0.3s;
+
+        &:hover, &:active {
+            border: 1px solid $successColor;
+            border-radius: 5px;
+            color: $successColor;
+        }
+
+        &:active {
+            transform: translateY(4px);
+        }
     }
+
     .authButtons {
         @include flex-align-justify-center;
         padding: 0 22px;
-        .btnSingIn {
-            display: flex;
-            width: 84px;
-            height: 35px;
+
+        .btnSingIn, .btnSingUp {
+            @include flex-align-justify-center;
+            width: 109px;
+            height: 51px;
             flex-direction: column;
             justify-content: center;
             flex-shrink: 0;
             background-color: $backgroundColorHeader;
             @include typography-for-header-title;
             border: none;
-        }
-        .btnSingUp {
-            @include flex-align-justify-center;
-            justify-content: center;
-            width: 109px;
-            height: 51px;
-            flex-shrink: 0;
-            border-radius: 5px;
-            border: 1px solid $successColor;
-            background-color: $backgroundColorHeader;
-            @include typography-for-header-title;
-            color: $successColor;
-            transition: transform 0.1s;
-            &:hover {
-                border: 2px solid $successColor;
-              }
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s, border 0.3s;
+
+            &:hover, &:active {
+                border: 1px solid $successColor;
+                border-radius: 5px;
+                color: $successColor;
+            }
+
             &:active {
                 transform: translateY(4px);
             }
