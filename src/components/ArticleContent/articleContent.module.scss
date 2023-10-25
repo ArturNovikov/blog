@@ -1,9 +1,9 @@
 @import '../../styles/global.scss';
 
 .articleContent {
-    white-space: wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 682px;
-    @include typography-for-content;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 682px;
+  @include typography-for-content;
 }

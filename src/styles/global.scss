@@ -1,133 +1,133 @@
-$backgroundColor: #EBEEF3;
-$backgroundColorHeader:#FFF;
-$headingColor:rgba(0, 0, 0, 0.85);
-$successColor: #52C41A;
-$backgroundColorBase: #FFF;
-$borderColor: #D9D9D9;
-$infoColor: #1890FF;
+$backgroundColor: #ebeef3;
+$backgroundColorHeader: #fff;
+$headingColor: rgba(0, 0, 0, 0.85);
+$successColor: #52c41a;
+$backgroundColorBase: #fff;
+$borderColor: #d9d9d9;
+$infoColor: #1890ff;
 $infoColorHover: #0056b3;
-$textColorSecondary: rgba(0, 0, 0, 0.50);
+$textColorSecondary: rgba(0, 0, 0, 0.5);
 $textColor: rgba(0, 0, 0, 0.75);
 $textColorForFormsTitles: #262626;
 $textColorForFormsAgreement: #595959;
-$textColorForFormsFields: #BFBFBF;
-$textColorForFormsAlternativeSign: #8C8C8C;
+$textColorForFormsFields: #bfbfbf;
+$textColorForFormsAlternativeSign: #8c8c8c;
 
 @mixin flex-align-justify-center {
-    display: flex;
-    align-items: center;
-    justify-content: space-between
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @mixin article-style {
-    border-radius: 5px;
-    background: $backgroundColorBase
+  border-radius: 5px;
+  background: $backgroundColorBase;
 }
 
 @mixin vertical-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @mixin typography-for-header-title {
-    color:$headingColor;
-    font-family: 'Inter UI', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
+  color: $headingColor;
+  font-family: 'Inter UI', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
 }
 
 @mixin typography-for-article-header {
-    color: $infoColor;
-    font-family: 'Inter UI', sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
+  color: $infoColor;
+  font-family: 'Inter UI', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
 }
 
 @mixin typography-for-tags {
-    color: $textColorSecondary;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: $textColorSecondary;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 @mixin typography-for-content {
-    color: $textColor;
-    font-family: 'Inter UI', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
+  color: $textColor;
+  font-family: 'Inter UI', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 @mixin typography-for-date {
-    color: $textColorSecondary;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
+  color: $textColorSecondary;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 @mixin typography-for-form-title {
-    color: $textColorForFormsTitles;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 28px;
+  color: $textColorForFormsTitles;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
 }
 
 @mixin typography-for-form-names {
-    color: $textColorForFormsTitles;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
+  color: $textColorForFormsTitles;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 @mixin typography-for-form-fields {
-    color: $textColorForFormsFields;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
+  color: $textColorForFormsFields;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 @mixin typography-for-create-form-btn {
-    color: $backgroundColorHeader;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
+  color: $backgroundColorHeader;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 @mixin typography-for-alternative-sign {
-    color: $textColorForFormsAlternativeSign;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
+  color: $textColorForFormsAlternativeSign;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 @mixin typography-for-signIn-alternative {
-    color: $infoColor;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
+  color: $infoColor;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 }

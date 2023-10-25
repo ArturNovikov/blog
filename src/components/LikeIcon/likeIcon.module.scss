@@ -1,12 +1,12 @@
 @import '../../styles/global.scss';
 
 .articleMeta {
-    @include flex-align-justify-center;
-    justify-content: flex-start;
-    .articleLikes__heart {
-        padding-right: 5px;
-    }
-    .articleLikes__count {
-        @include typography-for-content;
-    }
+  @include flex-align-justify-center;
+  justify-content: flex-start;
+  .articleLikes__heart {
+    padding-right: 5px;
+  }
+  .articleLikes__count {
+    @include typography-for-content;
+  }
 }

@@ -1,11 +1,11 @@
 @import '../../styles/global.scss';
 
 .articleHeader {
-    @include flex-align-justify-center;
-    justify-content: flex-start;
-    padding-top: 15px;
-    .articleHeader__title {
-        @include typography-for-article-header;
-        padding-right: 13px;
-    }
+  @include flex-align-justify-center;
+  justify-content: flex-start;
+  padding-top: 15px;
+  .articleHeader__title {
+    @include typography-for-article-header;
+    padding-right: 13px;
+  }
 }

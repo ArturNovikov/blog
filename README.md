@@ -1,6 +1,6 @@
 blog/
 ├── husky/
-│ ├── _/
+│ ├── \_/
 │ │ ├── .gitignore
 │ │ └── husky.sh
 │ └── pre-commit

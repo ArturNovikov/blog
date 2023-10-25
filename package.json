@@ -39,7 +39,8 @@
     "linter:fix": "eslint --fix \"**/*.{js,jsx}\"",
     "format": "prettier --write ./src/**/*.{js,jsx}",
     "lint-staged": "lint-staged",
-    "eslint:debug": "eslint --debug ./src/**/*.{js,jsx}"
+    "eslint:debug": "eslint --debug ./src/**/*.{js,jsx}",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -75,22 +76,21 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "sass": "^1.69.3",
-    "svgo": "^2.8.0"
+    "svgo": "^2.8.0",
+    "husky": "^8.0.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run test && lint-staged"
     }
   },
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }
