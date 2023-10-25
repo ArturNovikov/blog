@@ -41,6 +41,9 @@
             @include typography-for-header-title;
             color: $successColor;
             transition: transform 0.1s;
+            &:hover {
+                border: 2px solid $successColor;
+              }
             &:active {
                 transform: translateY(4px);
             }

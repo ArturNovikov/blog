@@ -3,9 +3,15 @@ $backgroundColorHeader:#FFF;
 $headingColor:rgba(0, 0, 0, 0.85);
 $successColor: #52C41A;
 $backgroundColorBase: #FFF;
+$borderColor: #D9D9D9;
 $infoColor: #1890FF;
+$infoColorHover: #0056b3;
 $textColorSecondary: rgba(0, 0, 0, 0.50);
 $textColor: rgba(0, 0, 0, 0.75);
+$textColorForFormsTitles: #262626;
+$textColorForFormsAgreement: #595959;
+$textColorForFormsFields: #BFBFBF;
+$textColorForFormsAlternativeSign: #8C8C8C;
 
 @mixin flex-align-justify-center {
     display: flex;
@@ -44,7 +50,7 @@ $textColor: rgba(0, 0, 0, 0.75);
 
 @mixin typography-for-tags {
     color: $textColorSecondary;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -62,9 +68,66 @@ $textColor: rgba(0, 0, 0, 0.75);
 
 @mixin typography-for-date {
     color: $textColorSecondary;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+}
+
+@mixin typography-for-form-title {
+    color: $textColorForFormsTitles;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+@mixin typography-for-form-names {
+    color: $textColorForFormsTitles;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+@mixin typography-for-form-fields {
+    color: $textColorForFormsFields;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+@mixin typography-for-create-form-btn {
+    color: $backgroundColorHeader;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+@mixin typography-for-alternative-sign {
+    color: $textColorForFormsAlternativeSign;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+@mixin typography-for-signIn-alternative {
+    color: $infoColor;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
 }
