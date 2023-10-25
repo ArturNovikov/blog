@@ -7,7 +7,7 @@ import Authorised from './authorised';
 const DesktopAuthorised = () => {
   return (
     <>
-      <Header />
+      <Header isAuthorised={true} />
       <Authorised />
     </>
   );
