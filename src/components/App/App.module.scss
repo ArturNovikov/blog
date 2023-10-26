@@ -6,13 +6,4 @@
   min-height: 977px;
   width: 1440px;
   background-color: $backgroundColor;
-  main {
-    .articlesList {
-      @include vertical-center;
-      row-gap: 20px;
-      & > :last-child {
-        margin-bottom: 20px;
-      }
-    }
-  }
 }

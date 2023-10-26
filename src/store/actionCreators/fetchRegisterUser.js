@@ -22,7 +22,9 @@ export const registerUser = (userData) => async (dispatch) => {
   try {
     const response = await apiService.registerUser(userData);
     dispatch(fetchRegisterSuccess(response.user));
+    return response;
   } catch (error) {
     dispatch(fetchRegisterError(error.message));
+    throw error;
   }
 };

@@ -1,32 +1,39 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import Header from '../Header/index';
+import Layout from '../Layout';
 import ArticlesList from '../ArticlesList';
 import DesktopSignUp from '../../pages/DesktopSignUp';
 import DesktopSignIn from '../../pages/DesktopSignIn';
 import DesktopAuthorised from '../../pages/DesktopAuthorised';
+import ArticleItem from '../../pages/ArticleItem';
 
 import styles from './App.module.scss';
 
 const App = () => {
   return (
     <div className={styles.container}>
-      <Router>
-        <Switch>
-          <Route exact path="/sign-in" component={DesktopSignIn} />
-          <Route exact path="/sign-up" component={DesktopSignUp} />
-          <Route exact path="/profile" component={DesktopAuthorised} />
-          <Route path="/">
-            <>
-              <Header />
-              <main>
-                <ArticlesList className={styles.articlesList} />
-              </main>
-            </>
-          </Route>
-        </Switch>
-      </Router>
+      <Routes>
+        <Route path="/sign-in" element={<DesktopSignIn />} />
+        <Route path="/sign-up" element={<DesktopSignUp />} />
+        <Route path="/profile" element={<DesktopAuthorised />} />
+        <Route
+          path="/articles/:slug"
+          element={
+            <Layout>
+              <ArticleItem />
+            </Layout>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <ArticlesList />
+            </Layout>
+          }
+        />
+      </Routes>
     </div>
   );
 };

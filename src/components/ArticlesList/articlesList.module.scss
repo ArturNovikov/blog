@@ -5,3 +5,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.articlesList {
+  @include vertical-center;
+  row-gap: 20px;
+  & > :last-child {
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,7 @@
+@import '../../styles/global.scss';
+
+.main {
+    @include vertical-center;
+    row-gap: 20px;
+    margin-bottom: 20px;
+}

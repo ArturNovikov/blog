@@ -48,6 +48,10 @@ blog/
 │ │ │ ├── header.js
 │ │ │ ├── header.module.scss
 │ │ │ └── index.js
+│ │ │ ├── Layout/
+│ │ │ │ ├── layout.js
+│ │ │ │ ├── layout.module.scss
+│ │ │ │ └── index.js
 │ │ │ ├── LikeIcon/
 │ │ │ │ ├── likeIcon.js
 │ │ │ │ ├── likeIcon.module.scss
@@ -77,25 +81,21 @@ blog/
 │ │ │ ├── desktopSignUpInvalid.js
 │ │ │ ├── desktopSignUpInvalid.module.scss
 │ │ │ └── index.js
+│ ├── services/
+│ │ └── apiService.js
 │ ├── store/
 │ │ ├── actionCreators
 │ │ │ ├── fetchArticleGlobally.js
-│ │ │ └── ...
+│ │ │ └── fetchRegisterUser.js
 │ │ ├── actions
-│ │ │ ├── types.js
-│ │ │ └── ...
+│ │ │ └── types.js
 │ │ ├── reducers
 │ │ │ ├── articlesReducer.js
 │ │ │ ├── index.js
-│ │ │ └── ...
-│ │ ├── initialState.js
+│ │ │ └── userRequestReducer.js
 │ │ ├── store.js
-│ ├── services/
-│ │ ├── apiService.js
-│ │ └── ...
 │ ├── styles/
-│ │ ├── global.scss
-│ │ └── ...
+│ │ └── global.scss
 │ ├── utils/
 │ │ ├── formatDate.js
 │ │ ├── truncateText.js
