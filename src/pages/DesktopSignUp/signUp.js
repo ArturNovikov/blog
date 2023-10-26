@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
+import ApiService from '../../services/apiService';
+
 import styles from './signUp.module.scss';
 
 const SignUp = () => {
@@ -13,8 +15,20 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const apiService = new ApiService();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await apiService.registerUser(data);
+      if (response && response.user && response.user.token) {
+        localStorage.setItem('jwtToken', response.user.token);
+      } else {
+        console.log(response);
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

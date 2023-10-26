@@ -11,6 +11,23 @@ class ApiService {
       throw new Error(`Server responded with a status: ${error.message}`);
     }
   }
+
+  async registerUser(userData) {
+    try {
+      const response = await fetch(`${BASE_URL}/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: userData }),
+      });
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      throw new Error(`Server responded with a status: ${error.message}`);
+    }
+  }
 }
 
 export default ApiService;
