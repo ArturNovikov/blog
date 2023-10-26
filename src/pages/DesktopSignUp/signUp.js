@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import classNames from 'classnames';
 
 import styles from './signUp.module.scss';
 
@@ -21,6 +22,9 @@ const SignUp = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Username</label>
         <input
+          className={classNames({
+            [styles.usernameError]: errors.username,
+          })}
           type="text"
           name="username"
           placeholder="Username"
@@ -29,6 +33,9 @@ const SignUp = () => {
         {errors.username && <p>Username should be between 3 and 20 characters.</p>}
         <label>Email address</label>
         <input
+          className={classNames({
+            [styles.emailError]: errors.email,
+          })}
           type="email"
           name="email"
           placeholder="Email address"
@@ -37,6 +44,9 @@ const SignUp = () => {
         {errors.email && <p>Email is required and should be valid.</p>}
         <label>Password</label>
         <input
+          className={classNames({
+            [styles.passwordError]: errors.password,
+          })}
           type="password"
           name="password"
           placeholder="Password"
@@ -45,6 +55,9 @@ const SignUp = () => {
         {errors.password && <p>Password should be between 6 and 40 characters.</p>}
         <label>Repeat Password</label>
         <input
+          className={classNames({
+            [styles.confirmPasswordError]: errors.confirmPassword,
+          })}
           type="password"
           name="confirmPassword"
           placeholder="Repeat Password"
@@ -52,7 +65,14 @@ const SignUp = () => {
         />
         {errors.confirmPassword && <p>Passwords should match.</p>}
         <div className={styles.agreeCheckbox}>
-          <input type="checkbox" name="agree" {...register('checkbox', { required: true })} />
+          <input
+            className={classNames({
+              [styles.agreeError]: errors.agree,
+            })}
+            type="checkbox"
+            name="agree"
+            {...register('agree', { required: true })}
+          />
           {errors.agree && <p>You must agree before submitting.</p>}
           <label>I agree to the processing of my personal information</label>
         </div>

@@ -12,6 +12,7 @@ $textColorForFormsTitles: #262626;
 $textColorForFormsAgreement: #595959;
 $textColorForFormsFields: #bfbfbf;
 $textColorForFormsAlternativeSign: #8c8c8c;
+$textColorForInvalidForm: #F5222D;
 
 @mixin flex-align-justify-center {
   display: flex;
@@ -130,4 +131,13 @@ $textColorForFormsAlternativeSign: #8c8c8c;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+}
+
+@mixin typography-for-invalid-form {
+  color: $textColorForInvalidForm;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }

@@ -42,6 +42,12 @@
       }
     }
 
+    p {
+      @include typography-for-invalid-form;
+      margin-top: -12px;
+      margin-bottom: 12px;
+    }
+    
     .agreeCheckbox {
       display: flex;
       align-items: flex-start;
@@ -53,6 +59,10 @@
       }
       label {
         color: $textColorForFormsAgreement;
+      }
+      p {
+        margin-top: 0px;
+        margin-bottom: 12px;
       }
     }
 
@@ -87,5 +97,12 @@
         text-decoration: underline;
       }
     }
+  }
+
+  .usernameError,
+  .emailError,
+  .passwordError,
+  .confirmPasswordError {
+    border: 1px solid $textColorForInvalidForm;
   }
 }
