@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import ApiService from '../../services/apiService';
+import { registerUser } from '../../store/actionCreators/fetchRegisterUser';
 
 import styles from './signUp.module.scss';
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userData.data);
+
   const {
     register,
     handleSubmit,
@@ -15,20 +19,12 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const apiService = new ApiService();
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await apiService.registerUser(data);
-      if (response && response.user && response.user.token) {
-        localStorage.setItem('jwtToken', response.user.token);
-      } else {
-        console.log(response);
-      }
-      console.log(response);
-    } catch (error) {
-      console.log(error.message);
-    }
+  const onSubmit = (data) => {
+    dispatch(registerUser(data));
   };
 
   return (
