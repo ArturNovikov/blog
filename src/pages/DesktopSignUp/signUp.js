@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import styles from './signUp.module.scss';
 
@@ -79,7 +80,7 @@ const SignUp = () => {
         <button type="submit">Create</button>
       </form>
       <div className={styles.alternative}>
-        Already have an account? <a href="#">Sign In</a>
+        Already have an account? <Link to="/sign-in">Sign In</Link>
       </div>
     </div>
   );

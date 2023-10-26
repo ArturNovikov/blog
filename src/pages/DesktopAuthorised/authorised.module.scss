@@ -60,4 +60,17 @@
       }
     }
   }
+
+  p {
+    @include typography-for-invalid-form;
+    margin-top: -12px;
+    margin-bottom: 12px;
+  }
+  
+  .usernameError,
+  .emailError,
+  .passwordError,
+  .avatarUrlError {
+    border: 1px solid $textColorForInvalidForm;
+  }
 }

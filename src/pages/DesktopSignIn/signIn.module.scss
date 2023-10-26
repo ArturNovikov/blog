@@ -41,6 +41,12 @@
         border-color: $infoColor;
       }
     }
+    
+    p {
+      @include typography-for-invalid-form;
+      margin-top: -12px;
+      margin-bottom: 12px;
+    }
 
     button {
       @include typography-for-create-form-btn;
@@ -73,5 +79,10 @@
         text-decoration: underline;
       }
     }
+  }
+
+  .emailError,
+  .passwordError {
+    border: 1px solid $textColorForInvalidForm;
   }
 }

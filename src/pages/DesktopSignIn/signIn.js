@@ -1,39 +1,51 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import classNames from 'classnames';
 
 import styles from './signIn.module.scss';
 
 const SignIn = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: Implement the submit logic here
-    console.log(formData);
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
     <div className={styles.signInContainer}>
       <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label>Email address</label>
-        <input type="email" name="email" placeholder="Email address" onChange={handleChange} />
+        <input
+          className={classNames({
+            [styles.emailError]: errors.email,
+          })}
+          type="email"
+          name="email"
+          placeholder="Email address"
+          {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+        />
+        {errors.email && <p>Invalid email.</p>}
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+        <input
+          className={classNames({
+            [styles.passwordError]: errors.password,
+          })}
+          type="password"
+          name="password"
+          placeholder="Password"
+          {...register('password', { required: true, minLength: 6, maxLength: 40 })}
+        />
+        {errors.password && <p>Invalid password.</p>}
         <button type="submit">Login</button>
       </form>
       <div className={styles.alternative}>
-        Do not have an account? <a href="#">Sign Up</a>
+        Do not have an account? <Link to="/sign-up">Sign Up</Link>
       </div>
     </div>
   );
