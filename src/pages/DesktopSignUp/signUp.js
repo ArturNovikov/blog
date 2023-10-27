@@ -1,9 +1,10 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { setIsAuthorised } from '../../store/actionCreators/seiIsAuthorized';
 import { registerUser } from '../../store/actionCreators/fetchRegisterUser';
 
 import styles from './signUp.module.scss';
@@ -11,6 +12,11 @@ import styles from './signUp.module.scss';
 const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
+
+  useEffect(() => {
+    console.log(isAuthorised);
+  }, [isAuthorised]);
 
   const {
     register,
@@ -24,6 +30,7 @@ const SignUp = () => {
       .then((response) => {
         if (response.user.token) {
           localStorage.setItem('token', response.token);
+          dispatch(setIsAuthorised(true));
           navigate('/');
         }
       })

@@ -6,6 +6,7 @@ import skull from '../../assets/images/skull-crossbones-solid.svg';
 import styles from './header.module.scss';
 
 const Header = ({ isAuthorised }) => {
+  console.log(isAuthorised);
   return (
     <header className={styles.header}>
       <Link to="/">

@@ -40,6 +40,9 @@
       &:focus {
         border-color: $infoColor;
       }
+      &::placeholder {
+        @include typography-for-form-fields-placeholder;
+      }
     }
     
     p {
