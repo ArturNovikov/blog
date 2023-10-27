@@ -9,11 +9,27 @@ import DesktopSignIn from '../../pages/DesktopSignIn';
 import DesktopUpdateUser from '../../pages/DesktopUpdateUser';
 import ArticleItem from '../../pages/ArticleItem';
 import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
+import { setUserName } from '../../store/actionCreators/setUserName';
+import { setUserImage } from '../../store/actionCreators/setUserImage';
+import ApiService from '../../services/apiService';
 
 import styles from './App.module.scss';
 
 const App = () => {
   const dispatch = useDispatch();
+  const apiService = new ApiService();
+
+  useEffect(() => {
+    apiService
+      .fetchCurrentUser()
+      .then((data) => {
+        dispatch(setUserName(data.user.username));
+        dispatch(setUserImage(data.user.image));
+      })
+      .catch((error) => {
+        console.error('Error during user data fetching:', error);
+      });
+  }, [dispatch]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');

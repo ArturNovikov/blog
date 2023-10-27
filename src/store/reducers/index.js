@@ -6,7 +6,7 @@ import isAuthorisedReducer from './isAuthorisedReducer';
 import loginReducer from './loginReducer';
 import userUpdateReducer from './userUpdateReducer';
 import setUserNameReducer from './setUserNameReducer';
-import setUserImageReducer from './seUserImage';
+import setUserImageReducer from './setUserImage';
 
 const rootReducer = combineReducers({
   articles: articleReducer,

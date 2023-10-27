@@ -64,6 +64,30 @@ class ApiService {
       throw new Error(`Server responded with a status: ${error.message}`);
     }
   }
+
+  async fetchCurrentUser() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return null;
+    }
+
+    try {
+      const response = await fetch(`${BASE_URL}/user`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Token ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      throw new Error(`Error fetching current user: ${error.message}`);
+    }
+  }
 }
 
 export default ApiService;

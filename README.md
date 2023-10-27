@@ -1,6 +1,5 @@
 blog/
 ├── husky/
-│ ├── \_/
 │ │ ├── .gitignore
 │ │ └── husky.sh
 │ └── pre-commit
@@ -68,11 +67,18 @@ blog/
 │ │ ├── DesktopSignIn/
 │ │ │ ├── desktopSignIn.js
 │ │ │ ├── desktopSignIn.module.scss
-│ │ │ └── index.js
+│ │ │ ├── index.js
+│ │ │ └── singIn.js
 │ │ ├── DesktopSignUp/
 │ │ │ ├── desktopSignUp.js
 │ │ │ ├── desktopSignUp.module.scss
-│ │ │ └── index.js
+│ │ │ ├── index.js
+│ │ │ └── signUp.js
+│ │ ├── DesktopUpdateUser/
+│ │ │ ├── desktopUpdateUser.js
+│ │ │ ├── desktopUpdateUser.module.scss
+│ │ │ ├── index.js
+│ │ │ └── update.js
 │ │ ├── DesktopEditProfile/
 │ │ │ ├── desktopEditProfile.js
 │ │ │ ├── desktopEditProfile.module.scss
@@ -86,13 +92,22 @@ blog/
 │ ├── store/
 │ │ ├── actionCreators
 │ │ │ ├── fetchArticleGlobally.js
-│ │ │ └── fetchRegisterUser.js
+│ │ │ ├── fetchLoginUser.js
+│ │ │ ├── fetchRegisterUser.js
+│ │ │ ├── fetchUpdateUser.js
+│ │ │ ├── setAuthorized.js
+│ │ │ ├── setUserImage.js
+│ │ │ └── setUserName.js
 │ │ ├── actions
 │ │ │ └── types.js
 │ │ ├── reducers
 │ │ │ ├── articlesReducer.js
 │ │ │ ├── index.js
-│ │ │ └── userRequestReducer.js
+│ │ │ ├── isAuthorisedReducer.js
+│ │ │ ├── loginReducer.js
+│ │ │ ├── setUserNameReducer.js
+│ │ │ ├── userRequestReducer.js
+│ │ │ └── userUpdateReducer.js
 │ │ ├── store.js
 │ ├── styles/
 │ │ └── global.scss
