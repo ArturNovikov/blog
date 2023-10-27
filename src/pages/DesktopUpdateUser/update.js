@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
 import { updateUser } from '../../store/actionCreators/fetchUpdateUser';
+import { setUserName } from '../../store/actionCreators/setUserName';
 
 import styles from './update.module.scss';
 
@@ -27,6 +28,8 @@ const Update = () => {
       .then((response) => {
         console.log(response);
         if (response.user.token) {
+          dispatch(setUserName(response.user.username));
+          console.log(response.user);
           console.log('Updated!');
         }
       })

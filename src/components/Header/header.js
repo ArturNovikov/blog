@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setUnAuthorised } from '../../store/actionCreators/setIsAuthorized';
 import skull from '../../assets/images/skull-crossbones-solid.svg';
@@ -10,6 +10,11 @@ import styles from './header.module.scss';
 const Header = ({ isAuthorised }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const name = useSelector((state) => state.userName.userName);
+
+  useEffect(() => {
+    console.log(name);
+  }, [name]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -28,7 +33,7 @@ const Header = ({ isAuthorised }) => {
             <button className={styles.btnCreateArticle}>Create article</button>
             <div className={styles.userContainer}>
               <Link to="/profile" className={styles.userName}>
-                John Doe
+                {name}
               </Link>
               <img className={styles.userImg} src={skull} alt="user" />
             </div>
