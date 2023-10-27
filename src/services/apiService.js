@@ -28,6 +28,23 @@ class ApiService {
       throw new Error(`Server responded with a status: ${error.message}`);
     }
   }
+
+  async loginUser(loginData) {
+    try {
+      const response = await fetch(`${BASE_URL}/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: loginData }),
+      });
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      throw new Error(`Server responded with a status: ${error.message}`);
+    }
+  }
 }
 
 export default ApiService;

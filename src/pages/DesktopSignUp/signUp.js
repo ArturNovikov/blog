@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { setIsAuthorised } from '../../store/actionCreators/seiIsAuthorized';
+import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
 import { registerUser } from '../../store/actionCreators/fetchRegisterUser';
 
 import styles from './signUp.module.scss';
@@ -29,13 +29,13 @@ const SignUp = () => {
     dispatch(registerUser(data))
       .then((response) => {
         if (response.user.token) {
-          localStorage.setItem('token', response.token);
+          localStorage.setItem('token', response.user.token);
           dispatch(setIsAuthorised(true));
           navigate('/');
         }
       })
       .catch((error) => {
-        console.log('Registration Error: ' + error.message);
+        console.error('Registration Error: ' + error.message);
       });
   };
 
