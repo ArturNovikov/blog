@@ -1,12 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
+import { setUnAuthorised } from '../../store/actionCreators/setIsAuthorized';
 import skull from '../../assets/images/skull-crossbones-solid.svg';
 
 import styles from './header.module.scss';
 
 const Header = ({ isAuthorised }) => {
-  console.log(isAuthorised);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    dispatch(setUnAuthorised(false));
+    navigate('/');
+  };
+
   return (
     <header className={styles.header}>
       <Link to="/">
@@ -22,7 +32,9 @@ const Header = ({ isAuthorised }) => {
               </Link>
               <img className={styles.userImg} src={skull} alt="user" />
             </div>
-            <button className={styles.btnLogOut}>Log Out</button>
+            <button className={styles.btnLogOut} onClick={handleLogout}>
+              Log Out
+            </button>
           </>
         ) : (
           <>
