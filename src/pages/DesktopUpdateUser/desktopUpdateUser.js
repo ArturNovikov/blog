@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux';
 
 import Header from '../../components/Header';
 
-import Authorised from './authorised';
+import Update from './update';
 
-const DesktopAuthorised = () => {
+const desktopUpdateUser = () => {
   const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
   console.log(isAuthorised);
   return (
     <>
       <Header isAuthorised={isAuthorised} />
-      <Authorised />
+      <Update />
     </>
   );
 };
 
-export default DesktopAuthorised;
+export default desktopUpdateUser;

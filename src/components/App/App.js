@@ -6,7 +6,7 @@ import Layout from '../Layout';
 import ArticlesList from '../ArticlesList';
 import DesktopSignUp from '../../pages/DesktopSignUp';
 import DesktopSignIn from '../../pages/DesktopSignIn';
-import DesktopAuthorised from '../../pages/DesktopAuthorised';
+import DesktopUpdateUser from '../../pages/DesktopUpdateUser';
 import ArticleItem from '../../pages/ArticleItem';
 import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
 
@@ -27,7 +27,7 @@ const App = () => {
       <Routes>
         <Route path="/sign-in" element={<DesktopSignIn />} />
         <Route path="/sign-up" element={<DesktopSignUp />} />
-        <Route path="/profile" element={<DesktopAuthorised />} />
+        <Route path="/profile" element={<DesktopUpdateUser />} />
         <Route
           path="/articles/:slug"
           element={

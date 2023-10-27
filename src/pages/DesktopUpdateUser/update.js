@@ -1,10 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
-import styles from './authorised.module.scss';
+import { updateUser } from '../../store/actionCreators/fetchUpdateUser';
 
-const Authorised = () => {
+import styles from './update.module.scss';
+
+const Update = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -12,7 +17,22 @@ const Authorised = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const updateData = {
+      email: data.email,
+      username: data.username,
+      image: data.avatarUrl || null,
+    };
+
+    dispatch(updateUser(updateData))
+      .then((response) => {
+        console.log(response);
+        if (response.user.token) {
+          console.log('Updated!');
+        }
+      })
+      .catch((error) => {
+        console.error('Update Error: ' + error.message);
+      });
   };
 
   return (
@@ -61,7 +81,7 @@ const Authorised = () => {
           name="avatarUrl"
           placeholder="Avatar image"
           {...register('avatarUrl', {
-            required: true,
+            required: false,
             pattern: {
               value: /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/,
               message: 'Please enter a valid URL',
@@ -75,4 +95,4 @@ const Authorised = () => {
   );
 };
 
-export default Authorised;
+export default Update;
