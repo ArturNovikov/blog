@@ -11,6 +11,7 @@ const Header = ({ isAuthorised }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const name = useSelector((state) => state.userName.userName);
+  const userImage = useSelector((state) => state.userImage.userImage);
 
   useEffect(() => {
     console.log(name);
@@ -35,7 +36,7 @@ const Header = ({ isAuthorised }) => {
               <Link to="/profile" className={styles.userName}>
                 {name}
               </Link>
-              <img className={styles.userImg} src={skull} alt="user" />
+              <img className={styles.userImg} src={userImage || skull} alt="user" />
             </div>
             <button className={styles.btnLogOut} onClick={handleLogout}>
               Log Out

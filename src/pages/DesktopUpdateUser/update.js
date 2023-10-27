@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { updateUser } from '../../store/actionCreators/fetchUpdateUser';
 import { setUserName } from '../../store/actionCreators/setUserName';
+import { setUserImage } from '../../store/actionCreators/setUserImage';
 
 import styles from './update.module.scss';
 
@@ -29,6 +30,7 @@ const Update = () => {
         console.log(response);
         if (response.user.token) {
           dispatch(setUserName(response.user.username));
+          dispatch(setUserImage(response.user.image));
           console.log(response.user);
           console.log('Updated!');
         }
