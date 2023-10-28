@@ -88,4 +88,8 @@
   .passwordError {
     border: 1px solid $textColorForInvalidForm;
   }
+
+  .errorMessage {
+    @include errorMessage;
+  }
 }

@@ -150,3 +150,9 @@ $textColorForInvalidForm: #F5222D;
   font-weight: 400;
   line-height: 22px;
 }
+
+@mixin errorMessage {
+  display: flex;
+  justify-content: center;
+  @include typography-for-invalid-form;
+}

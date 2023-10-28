@@ -24,7 +24,7 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     dispatch(registerUser(data))
-      .then(({ data }) => {
+      .then((data) => {
         if (data.user.token) {
           localStorage.setItem('token', data.user.token);
           dispatch(setIsAuthorised(true));
@@ -33,13 +33,12 @@ const SignUp = () => {
       })
       .catch(({ error, status }) => {
         if (status === 422) {
-          if (error.errors) {
-            if (error.errors.email) {
-              setError('email', {
-                type: 'manual',
-                message: error.errors.email,
-              });
-            }
+          if (error.errors && error.errors.email) {
+            setError('email', {
+              type: 'manual',
+              message: error.errors.email,
+            });
+
             if (error.errors.username) {
               setError('username', {
                 type: 'manual',

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setIsAuthorised } from '../store/actionCreators/setIsAuthorized';
 import { setUserName } from '../store/actionCreators/setUserName';
@@ -10,6 +10,7 @@ import ApiService from './apiService';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const apiService = new ApiService();
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
       dispatch(setIsAuthorised(false));
       setIsLoading(false);
     }
-  }, [dispatch]);
+  }, [dispatch, isAuthorised]);
 
   return <AuthContext.Provider value={{ isLoading }}>{children}</AuthContext.Provider>;
 };
