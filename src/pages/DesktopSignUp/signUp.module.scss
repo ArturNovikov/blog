@@ -108,4 +108,9 @@
   .confirmPasswordError {
     border: 1px solid $textColorForInvalidForm;
   }
+  .errorMessage {
+    display: flex;
+    justify-content: center;
+    @include typography-for-invalid-form;
+  }
 }
