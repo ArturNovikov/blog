@@ -1,66 +1,41 @@
-import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
+import { AuthProvider } from '../../services/AuthProvider';
 import Layout from '../Layout';
 import ArticlesList from '../ArticlesList';
 import DesktopSignUp from '../../pages/DesktopSignUp';
 import DesktopSignIn from '../../pages/DesktopSignIn';
 import DesktopUpdateUser from '../../pages/DesktopUpdateUser';
 import ArticleItem from '../../pages/ArticleItem';
-import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
-import { setUserName } from '../../store/actionCreators/setUserName';
-import { setUserImage } from '../../store/actionCreators/setUserImage';
-import ApiService from '../../services/apiService';
 
 import styles from './App.module.scss';
 
 const App = () => {
-  const dispatch = useDispatch();
-  const apiService = new ApiService();
-
-  useEffect(() => {
-    apiService
-      .fetchCurrentUser()
-      .then((data) => {
-        dispatch(setUserName(data.user.username));
-        dispatch(setUserImage(data.user.image));
-      })
-      .catch((error) => {
-        console.error('Error during user data fetching:', error);
-      });
-  }, [dispatch]);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      dispatch(setIsAuthorised(true));
-    }
-  }, [dispatch]);
-
   return (
     <div className={styles.container}>
-      <Routes>
-        <Route path="/sign-in" element={<DesktopSignIn />} />
-        <Route path="/sign-up" element={<DesktopSignUp />} />
-        <Route path="/profile" element={<DesktopUpdateUser />} />
-        <Route
-          path="/articles/:slug"
-          element={
-            <Layout>
-              <ArticleItem />
-            </Layout>
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <ArticlesList />
-            </Layout>
-          }
-        />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/sign-in" element={<DesktopSignIn />} />
+          <Route path="/sign-up" element={<DesktopSignUp />} />
+          <Route path="/profile" element={<DesktopUpdateUser />} />
+          <Route
+            path="/articles/:slug"
+            element={
+              <Layout>
+                <ArticleItem />
+              </Layout>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <ArticlesList />
+              </Layout>
+            }
+          />
+        </Routes>
+      </AuthProvider>
     </div>
   );
 };

@@ -88,6 +88,7 @@ blog/
 │ │ │ ├── desktopSignUpInvalid.module.scss
 │ │ │ └── index.js
 │ ├── services/
+│ │ ├── AuthProvider.js
 │ │ └── apiService.js
 │ ├── store/
 │ │ ├── actionCreators

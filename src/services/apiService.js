@@ -82,8 +82,8 @@ class ApiService {
       if (!response.ok) {
         throw new Error(`Server responded with status: ${response.status}`);
       }
-
-      return await response.json();
+      const data = await response.json();
+      return data;
     } catch (error) {
       throw new Error(`Error fetching current user: ${error.message}`);
     }

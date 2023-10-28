@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setUnAuthorised } from '../../store/actionCreators/setIsAuthorized';
+import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
 import skull from '../../assets/images/skull-crossbones-solid.svg';
 
 import styles from './header.module.scss';
@@ -19,7 +19,7 @@ const Header = ({ isAuthorised }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    dispatch(setUnAuthorised(false));
+    dispatch(setIsAuthorised(false));
     navigate('/');
   };
 
