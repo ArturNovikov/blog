@@ -9,8 +9,6 @@ blog/
 ├── src/
 │ ├── assets/
 │ │ ├── fonts/
-│ │ │ └── fonts.scss
-│ │ ├── fonts/
 │ │ │ ├── fonts.scss
 │ │ │ └── ...
 │ │ ├── images/

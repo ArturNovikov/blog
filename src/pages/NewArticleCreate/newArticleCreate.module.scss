@@ -1,0 +1,146 @@
+@import '../../styles/global.scss';
+
+.CreateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 21px;
+  width: 938px;
+  min-height: 701px;
+  margin-top: 14px;
+  padding: 48px 32px;
+  border-radius: 6px;
+  border: 1px solid $borderColor;
+  background: $backgroundColorBase;
+  box-shadow: $boxShadowStandard;
+
+  .CreateContainer__title{
+    width: 311px;
+    @include typography-for-form-title;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21px;
+    label {
+      display: flex;
+      width: 320px;
+      height: 22px;
+      flex-direction: column;
+      justify-content: center;
+      @include typography-for-form-names
+    }
+    input {
+      width: 874px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      padding: 8px 12px;
+      border: 1px solid $borderColor;
+      background: $backgroundColorBase;
+      @include typography-for-content;
+      &:focus {
+        border-color: $infoColor;
+      }
+      &::placeholder {
+        @include typography-for-form-fields-placeholder;
+      }
+    }
+    textarea{
+      width: 874px;
+      height: 168px;
+      flex-shrink: 0;
+      padding: 7px 12px;
+      border-radius: 4px;
+      border: 1px solid $borderColor;
+      background: $backgroundColorBase;
+      @include typography-for-content;
+      &:focus {
+        border-color: $infoColor;
+      }
+      &::placeholder {
+        @include typography-for-form-fields-placeholder;
+      }
+    }
+
+    div {
+      display: flex;
+      width: 874px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      div {
+        display: flex;
+        flex-direction: row;
+        column-gap: 18px;
+        input {
+          width: 300px;
+          height: 40px;
+          flex-shrink: 0;
+          @include typography-for-content;
+        }
+        .btnDeleteTag {
+          @include flex-align-justify-center;
+          justify-content: center;
+          width: 120px;
+          height: 40px;
+          cursor: pointer;
+          background-color: $backgroundColorBase;
+          border-radius: 4px;
+          border: 1px solid $btnDeleteColor;
+          @include typography-for-delete-btn;
+          transition: transform 0.3s, border 0.3s, font-size 0.3s;
+          &:active {
+            transform: translateY(4px);
+            border: 3px solid $btnDeleteColor;
+            font-size: 17px;
+          }
+          &:hover {
+            border: 3px solid $btnDeleteColor;
+            font-size: 17px;
+          }
+          
+        }
+        .btnAddTag {
+          @include flex-align-justify-center;
+          justify-content: center;
+          width: 136px;
+          height: 40px;
+          cursor: pointer;
+          background-color: $backgroundColorBase;
+          border-radius: 4px;
+          border: 1px solid $btnAddColor;
+          @include typography-for-add-btn;
+          transition: transform 0.3s, border 0.3s, font-size 0.3s;
+          &:active {
+            transform: translateY(4px);
+            border: 3px solid $btnAddColor;
+            font-size: 17px;
+          }
+          &:hover {
+            border: 3px solid $btnAddColor;
+            font-size: 17px;
+          }
+        }
+      }
+    }
+    button {
+      @include typography-for-create-form-btn;
+      width: 319px;
+      padding: 8px 16px;
+      background-color: $infoColor;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      transition: transform 0.3s;
+      &:hover {
+        background-color: $infoColorHover;
+      }
+      &:active {
+        transform: translateY(4px);
+      }
+    }
+  }
+}
