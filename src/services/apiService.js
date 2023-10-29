@@ -110,6 +110,26 @@ class ApiService {
       throw new Error(`Error fetching current user: ${error.message}`);
     }
   }
+
+  async postNewArticle(resultData) {
+    console.log('resultData apiService:', resultData);
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`${BASE_URL}/articles`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Token ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ article: resultData }),
+      });
+      const data = await response.json();
+      console.log('Data from post article apiService: ', data);
+      return data;
+    } catch (error) {
+      console.error('Post article error: ', error.message);
+    }
+  }
 }
 
 export default ApiService;
