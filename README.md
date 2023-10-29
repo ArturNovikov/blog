@@ -10,6 +10,9 @@ blog/
 │ ├── assets/
 │ │ ├── fonts/
 │ │ │ └── fonts.scss
+│ │ ├── fonts/
+│ │ │ ├── fonts.scss
+│ │ │ └── ...
 │ │ ├── images/
 │ │ │ ├── cat-solid.svg
 │ │ │ ├── heart 1.svg
@@ -22,7 +25,7 @@ blog/
 │ │ ├── Article/
 │ │ │ ├── article.js
 │ │ │ ├── article.module.scss
-│ │ │ ├── index.js
+│ │ │ └── index.js
 │ │ │ ├── ArticleAuthor/
 │ │ │ │ ├── articleAuthor.js
 │ │ │ │ ├── articleAuthor.module.scss
@@ -60,10 +63,6 @@ blog/
 │ │ │ ├── articleItem.js
 │ │ │ ├── articleItem.module.scss
 │ │ │ └── index.js
-│ │ ├── DesktopAuthorised/
-│ │ │ ├── desktopAuthorised.js
-│ │ │ ├── desktopAuthorised.module.scss
-│ │ │ └── index.js
 │ │ ├── DesktopSignIn/
 │ │ │ ├── desktopSignIn.js
 │ │ │ ├── desktopSignIn.module.scss
@@ -83,9 +82,9 @@ blog/
 │ │ │ ├── desktopEditProfile.js
 │ │ │ ├── desktopEditProfile.module.scss
 │ │ │ └── index.js
-│ │ ├── DesktopSignUpInvalid/
-│ │ │ ├── desktopSignUpInvalid.js
-│ │ │ ├── desktopSignUpInvalid.module.scss
+│ │ ├── NewArticleCreate/
+│ │ │ ├── newArticleCreate.js
+│ │ │ ├── newArticleCreate.module.scss
 │ │ │ └── index.js
 │ ├── services/
 │ │ ├── AuthProvider.js

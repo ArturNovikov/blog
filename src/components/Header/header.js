@@ -31,7 +31,9 @@ const Header = ({ isAuthorised }) => {
       <div className={styles.authButtons}>
         {isAuthorised ? (
           <>
-            <button className={styles.btnCreateArticle}>Create article</button>
+            <Link to="/new-article">
+              <button className={styles.btnCreateArticle}>Create article</button>
+            </Link>
             <div className={styles.userContainer}>
               <Link to="/profile" className={styles.userName}>
                 {name}

@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { AuthProvider } from '../../services/AuthProvider';
 import Layout from '../Layout';
@@ -7,10 +8,12 @@ import DesktopSignUp from '../../pages/DesktopSignUp';
 import DesktopSignIn from '../../pages/DesktopSignIn';
 import DesktopUpdateUser from '../../pages/DesktopUpdateUser';
 import ArticleItem from '../../pages/ArticleItem';
+import NewArticleCreate from '../../pages/NewArticleCreate';
 
 import styles from './App.module.scss';
 
 const App = () => {
+  const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
   return (
     <div className={styles.container}>
       <AuthProvider>
@@ -32,6 +35,18 @@ const App = () => {
               <Layout>
                 <ArticlesList />
               </Layout>
+            }
+          />
+          <Route
+            path="/new-article"
+            element={
+              isAuthorised ? (
+                <Layout>
+                  <NewArticleCreate />
+                </Layout>
+              ) : (
+                <DesktopSignIn />
+              )
             }
           />
         </Routes>
