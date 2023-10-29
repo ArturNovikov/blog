@@ -65,7 +65,11 @@ const SignUp = () => {
           type="text"
           name="username"
           placeholder="Username"
-          {...register('username', { required: true, minLength: 3, maxLength: 20 })}
+          {...register('username', {
+            required: true,
+            minLength: 3,
+            maxLength: 20,
+          })}
         />
         {errors.username && <p>{errors.username.message}</p>}
         <label>Email address</label>

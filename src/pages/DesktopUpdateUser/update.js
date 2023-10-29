@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
@@ -10,12 +10,14 @@ import { setUserImage } from '../../store/actionCreators/setUserImage';
 import styles from './update.module.scss';
 
 const Update = () => {
+  const [errorMessage, setErrorMessage] = useState();
   const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -27,16 +29,31 @@ const Update = () => {
 
     dispatch(updateUser(updateData))
       .then((response) => {
-        console.log(response);
         if (response.user.token) {
           dispatch(setUserName(response.user.username));
           dispatch(setUserImage(response.user.image));
-          console.log(response.user);
-          console.log('Updated!');
+          alert('Updated!');
         }
       })
-      .catch((error) => {
-        console.error('Update Error: ' + error.message);
+      .catch(({ error, status }) => {
+        if (status === 422) {
+          if (error.errors && error.errors.username) {
+            setError('username', {
+              type: 'manual',
+              message: `Username ${error.errors.username}`,
+            });
+          }
+
+          if (error.errors && error.errors.email) {
+            setError('email', {
+              type: 'manual',
+              message: `Email ${error.errors.email}`,
+            });
+          }
+          setErrorMessage(null);
+        } else {
+          setErrorMessage('Update error. Please, try again!');
+        }
       });
   };
 
@@ -52,9 +69,14 @@ const Update = () => {
           type="text"
           name="username"
           placeholder="Username"
-          {...register('username', { required: true, minLength: 3, maxLength: 20 })}
+          {...register('username', {
+            required: true,
+            minLength: 3,
+            maxLength: 20,
+            pattern: /\S/,
+          })}
         />
-        {errors.username && <p>Username invalid.</p>}
+        {errors.username && <p>{errors.username.message}</p>}
         <label>Email address</label>
         <input
           className={classNames({
@@ -65,18 +87,18 @@ const Update = () => {
           placeholder="Email address"
           {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
         />
-        {errors.email && <p>Invalid email.</p>}
+        {errors.email && <p>{errors.email.message}</p>}
         <label>New password</label>
         <input
           className={classNames({
-            [styles.passwordError]: errors.password,
+            [styles.passwordError]: errors.passwordUpdate,
           })}
           type="password"
-          name="password"
+          name="passwordUpdate"
           placeholder="New password"
-          {...register('password', { required: true, minLength: 6, maxLength: 40 })}
+          {...register('passwordUpdate', { required: true, minLength: 6, maxLength: 40 })}
         />
-        {errors.password && <p>Password should be different and from 6 to 40 characters.</p>}
+        {errors.passwordUpdate && <p>Password should be between 6 and 40 characters.</p>}
         <label>Avatar image (url)</label>
         <input
           className={classNames({
@@ -89,13 +111,14 @@ const Update = () => {
             required: false,
             pattern: {
               value: /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/,
-              message: 'Please enter a valid URL',
+              message: 'Please, enter a valid URL',
             },
           })}
         />
         {errors.avatarUrl && <p>{errors.avatarUrl.message}</p>}
         <button type="submit">Save</button>
       </form>
+      {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
     </div>
   );
 };

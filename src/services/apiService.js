@@ -54,7 +54,6 @@ class ApiService {
           status: response.status,
         };
       }
-
       return data;
     } catch (error) {
       console.error(`Server responded with a status: ${error.message}`);
@@ -74,10 +73,17 @@ class ApiService {
         body: JSON.stringify({ user: updateData }),
       });
       const data = await response.json();
-      console.log(data);
+
+      if (!response.ok) {
+        throw {
+          error: data,
+          status: response.status,
+        };
+      }
       return data;
     } catch (error) {
-      throw new Error(`Server responded with a status: ${error.message}`);
+      console.error(`Server responded with a status: ${error.message}`);
+      throw error;
     }
   }
 
