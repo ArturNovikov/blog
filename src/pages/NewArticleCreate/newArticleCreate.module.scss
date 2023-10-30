@@ -64,12 +64,13 @@
       }
     }
 
-    div {
+    .tagsContainer {
       display: flex;
       width: 874px;
       flex-direction: column;
       align-items: flex-start;
       gap: 5px;
+      margin-bottom: -16px;
       div {
         display: flex;
         flex-direction: row;
@@ -125,9 +126,10 @@
         }
       }
     }
-    button {
+    .btnSend {
       @include typography-for-create-form-btn;
       width: 319px;
+      margin-top: 16px;
       padding: 8px 16px;
       background-color: $infoColor;
       border: none;

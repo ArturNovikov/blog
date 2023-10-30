@@ -7,20 +7,41 @@ import ApiService from '../../services/apiService';
 import styles from './newArticleCreate.module.scss';
 
 const NewArticleCreate = () => {
-  const [tags, setTags] = useState(['']);
+  const [tags, setTags] = useState([{ id: generateID(), value: '' }]);
 
-  const addTag = () => {
+  console.log(tags);
+
+  const addTag = (event) => {
     event.preventDefault();
-    setTags([...tags, ' ']);
+    if (tags.length >= 10) return null;
+    setTags([...tags, { id: generateID(), value: '' }]);
     console.log(tags);
+  };
+
+  const deleteTag = (idToDelete, event) => {
+    event.preventDefault();
+    console.log(idToDelete);
+    if (tags.length === 1) return null;
+    const newTags = tags.filter((tag) => idToDelete !== tag.id);
+    setTags(newTags);
   };
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    setError,
+    /* setValue, */
+    /* watch, */
+    /* formState: { errors },
+    setError, */
   } = useForm();
+
+  const handleTagChange = (id, newValue) => {
+    setTags(tags.map((tag) => (tag.id === id ? { ...tag, value: newValue } : tag)));
+  };
+
+  function generateID() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2, 6).toUpperCase();
+  }
 
   const apiService = new ApiService();
 
@@ -58,7 +79,7 @@ const NewArticleCreate = () => {
           <label>Title</label>
           <input
             className={styles.titleInput}
-            text="text"
+            type="text"
             name="title"
             placeholder="Title"
             {...register('title', {
@@ -70,7 +91,7 @@ const NewArticleCreate = () => {
           <label>Short description</label>
           <input
             className={styles.titleInput}
-            text="text"
+            type="text"
             name="shortDescription"
             placeholder="Short description"
             {...register('shortDescription', {
@@ -90,22 +111,23 @@ const NewArticleCreate = () => {
             })}
           />
         </div>
-        {tags.map((tag, index) => (
-          <div key={index}>
-            <label>Tags</label>
+        {tags.map((tag) => (
+          <div key={tag.id} className={styles.tagsContainer}>
+            {tag.id === tags[0].id && <label>Tags</label>}
             <div>
               <input
                 className={styles.tags}
-                text="tags"
-                name={`tags${index}`}
+                type="text"
+                name={`tags${tag.id}`}
                 placeholder="tags"
-                {...register(`tags${index}`, {
-                  required: false,
-                })}
+                value={tag.value}
+                onChange={(e) => handleTagChange(tag.id, e.target.value)}
               />
-              <button className={styles.btnDeleteTag}>Delete</button>
-              {index + 1 === tags.length && (
-                <button className={styles.btnAddTag} onClick={addTag}>
+              <button className={styles.btnDeleteTag} onClick={(event) => deleteTag(tag.id, event)}>
+                Delete
+              </button>
+              {tags.indexOf(tag) === tags.length - 1 && (
+                <button className={styles.btnAddTag} onClick={(event) => addTag(event)}>
                   Add tag
                 </button>
               )}
