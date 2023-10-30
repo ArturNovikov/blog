@@ -9,6 +9,7 @@ import DesktopSignIn from '../../pages/DesktopSignIn';
 import DesktopUpdateUser from '../../pages/DesktopUpdateUser';
 import ArticleItem from '../../pages/ArticleItem';
 import NewArticleCreate from '../../pages/NewArticleCreate';
+import DesktopArticleAuthorized from '../../pages/DesktopArticleAuthorised';
 
 import styles from './App.module.scss';
 
@@ -43,6 +44,18 @@ const App = () => {
               isAuthorised ? (
                 <Layout>
                   <NewArticleCreate />
+                </Layout>
+              ) : (
+                <DesktopSignIn />
+              )
+            }
+          />
+          <Route
+            path="/articles/created-new"
+            element={
+              isAuthorised ? (
+                <Layout>
+                  <DesktopArticleAuthorized />
                 </Layout>
               ) : (
                 <DesktopSignIn />

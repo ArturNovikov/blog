@@ -1,7 +1,8 @@
 /* eslint-disable */
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm, useFieldArray } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { postArticle } from '../../store/actionCreators/fetchCreateArticleRequest';
 
@@ -9,6 +10,12 @@ import styles from './newArticleCreate.module.scss';
 
 const NewArticleCreate = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const articleFromRedux = useSelector((state) => state.createArticle.data);
+
+  useEffect(() => {
+    console.log('articleFromRedux: ', articleFromRedux);
+  }, [articleFromRedux]);
 
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
@@ -46,6 +53,8 @@ const NewArticleCreate = () => {
     console.log(resultData);
     dispatch(postArticle(resultData)).then((data) => {
       console.log(data);
+      if (data.article.slug) navigate('/articles/created-new');
+      return;
     });
   };
 

@@ -8,17 +8,18 @@ import Article from '../../components/Article';
 
 import style from './articleItem.module.scss';
 
-const ArticleItem = () => {
+const ArticleItem = ({ created }) => {
   const { slug } = useParams();
 
-  const loading = useSelector((state) => state.articles.loading);
-  const articlesArray = useSelector((state) => state.articles.data.articles);
+  const loading = useSelector((state) => (created ? state.createArticle.loading : state.articles.loading));
+  const articlesArray = useSelector((state) => (created ? state.createArticle.data : state.articles.data.articles));
+  console.log('articlesArray: ', articlesArray);
 
   if (loading) {
     return <Spin />;
   }
 
-  const article = articlesArray ? articlesArray.find((article) => article.slug === slug) : null;
+  const article = created ? articlesArray : articlesArray.find((article) => article.slug === slug);
 
   if (!article) {
     return <h1>Статья не найдена!</h1>;

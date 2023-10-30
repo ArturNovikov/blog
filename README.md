@@ -61,6 +61,11 @@ blog/
 │ │ │ ├── articleItem.js
 │ │ │ ├── articleItem.module.scss
 │ │ │ └── index.js
+│ │ ├── DesktopArticleAuthorized/
+│ │ │ ├── desktopArticleAuthorized.js
+│ │ │ ├── desktopArticleAuthorized.module.scss
+│ │ │ ├── index.js
+│ │ │ └── singIn.js
 │ │ ├── DesktopSignIn/
 │ │ │ ├── desktopSignIn.js
 │ │ │ ├── desktopSignIn.module.scss
@@ -89,7 +94,8 @@ blog/
 │ │ └── apiService.js
 │ ├── store/
 │ │ ├── actionCreators
-│ │ │ ├── fetchArticleGlobally.js
+│ │ │ ├── fetchArticleGlobally.js'
+│ │ │ ├── fetchCreateArticleRequest.js
 │ │ │ ├── fetchLoginUser.js
 │ │ │ ├── fetchRegisterUser.js
 │ │ │ ├── fetchUpdateUser.js
@@ -100,6 +106,7 @@ blog/
 │ │ │ └── types.js
 │ │ ├── reducers
 │ │ │ ├── articlesReducer.js
+│ │ │ ├── createArticleReducer.js
 │ │ │ ├── index.js
 │ │ │ ├── isAuthorisedReducer.js
 │ │ │ ├── loginReducer.js
