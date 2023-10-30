@@ -7,6 +7,7 @@ import loginReducer from './loginReducer';
 import userUpdateReducer from './userUpdateReducer';
 import setUserNameReducer from './setUserNameReducer';
 import setUserImageReducer from './setUserImage';
+import createArticleReducer from './createArticleReducer';
 
 const rootReducer = combineReducers({
   articles: articleReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   userUpdate: userUpdateReducer,
   userName: setUserNameReducer,
   userImage: setUserImageReducer,
+  createArticle: createArticleReducer,
 });
 
 export default rootReducer;

@@ -1,74 +1,52 @@
 /* eslint-disable */
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useForm, useFieldArray } from 'react-hook-form';
 
-import ApiService from '../../services/apiService';
+import { postArticle } from '../../store/actionCreators/fetchCreateArticleRequest';
 
 import styles from './newArticleCreate.module.scss';
 
 const NewArticleCreate = () => {
-  const [tags, setTags] = useState([{ id: generateID(), value: '' }]);
+  const dispatch = useDispatch();
 
-  console.log(tags);
+  const { register, handleSubmit, control } = useForm({
+    defaultValues: {
+      tags: [{ value: '' }],
+    },
+  });
 
-  const addTag = (event) => {
-    event.preventDefault();
-    if (tags.length >= 10) return null;
-    setTags([...tags, { id: generateID(), value: '' }]);
-    console.log(tags);
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'tags',
+  });
+
+  const addTag = () => {
+    if (fields.length >= 10) return;
+    append({ value: '' });
   };
 
-  const deleteTag = (idToDelete, event) => {
-    event.preventDefault();
-    console.log(idToDelete);
-    if (tags.length === 1) return null;
-    const newTags = tags.filter((tag) => idToDelete !== tag.id);
-    setTags(newTags);
+  const deleteTag = (index) => {
+    if (fields.length === 1) return;
+    remove(index);
   };
-
-  const {
-    register,
-    handleSubmit,
-    /* setValue, */
-    /* watch, */
-    /* formState: { errors },
-    setError, */
-  } = useForm();
-
-  const handleTagChange = (id, newValue) => {
-    setTags(tags.map((tag) => (tag.id === id ? { ...tag, value: newValue } : tag)));
-  };
-
-  function generateID() {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2, 6).toUpperCase();
-  }
-
-  const apiService = new ApiService();
 
   const articleDataFix = (newArticleData) => {
-    const tagsArray = Object.entries(newArticleData)
-      .filter(([tag]) => tag.startsWith('tags'))
-      .map(([, value]) => value);
-
-    let resultData = {
+    console.log(newArticleData);
+    return {
       title: newArticleData.title,
       description: newArticleData.shortDescription,
       body: newArticleData.text,
-      tagList: tagsArray,
+      tagList: newArticleData.tags.map((tag) => tag.value).filter((tag) => tag),
     };
-
-    return resultData;
   };
 
   const onSubmit = async (newArticleData) => {
     const resultData = articleDataFix(newArticleData);
-    console.log('resultData from function:', resultData);
-    try {
-      const response = await apiService.postNewArticle(resultData);
-      console.log('response with tags:', response);
-    } catch (error) {
-      console.error('Post NewArticleCreate error: ', error.message);
-    }
+    console.log(resultData);
+    dispatch(postArticle(resultData)).then((data) => {
+      console.log(data);
+    });
   };
 
   return (
@@ -111,23 +89,23 @@ const NewArticleCreate = () => {
             })}
           />
         </div>
-        {tags.map((tag) => (
+        {fields.map((tag, index) => (
           <div key={tag.id} className={styles.tagsContainer}>
-            {tag.id === tags[0].id && <label>Tags</label>}
+            {index === 0 && <label>Tags</label>}
             <div>
               <input
                 className={styles.tags}
                 type="text"
-                name={`tags${tag.id}`}
+                name={`tags[${index}].value`}
                 placeholder="tags"
-                value={tag.value}
-                onChange={(e) => handleTagChange(tag.id, e.target.value)}
+                {...register(`tags[${index}].value`)}
+                defaultValue={tag.value}
               />
-              <button className={styles.btnDeleteTag} onClick={(event) => deleteTag(tag.id, event)}>
+              <button className={styles.btnDeleteTag} onClick={() => deleteTag(index)}>
                 Delete
               </button>
-              {tags.indexOf(tag) === tags.length - 1 && (
-                <button className={styles.btnAddTag} onClick={(event) => addTag(event)}>
+              {index === fields.length - 1 && (
+                <button className={styles.btnAddTag} onClick={addTag}>
                   Add tag
                 </button>
               )}
