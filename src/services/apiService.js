@@ -130,6 +130,26 @@ class ApiService {
       console.error('Post article error: ', error.message);
     }
   }
+
+  async deleteArticle(deleteData) {
+    console.log(deleteData);
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`${BASE_URL}/articles/${deleteData}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Error deleting article: ${response.status}`);
+      }
+      return true;
+    } catch (error) {
+      console.error('Error in deleteArticle:', error.message);
+      throw error;
+    }
+  }
 }
 
 export default ApiService;
