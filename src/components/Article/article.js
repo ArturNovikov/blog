@@ -10,7 +10,7 @@ import styles from './article.module.scss';
 const Article = ({ title, tags, author, date, slugKey, likes, description }) => {
   return (
     <article className={styles.article}>
-      <ArticleHeader className={styles.articleHeader} title={title} slug={slugKey} likes={likes} />
+      <ArticleHeader className={styles.articleHeader} title={title} slug={slugKey} likes={likes} author={author} />
       <ArticleTagList className={styles.articleTagList} tags={tags} />
       <ArticleContent className={styles.articleContent} description={description} />
       <ArticleAuthor className={styles.articleAuthor} author={author} date={date} />

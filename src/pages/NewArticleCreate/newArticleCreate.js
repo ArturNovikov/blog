@@ -5,6 +5,7 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { postArticle } from '../../store/actionCreators/fetchCreateArticleRequest';
+import { setCreatedStatus } from '../../store/actionCreators/setCreatedStatus';
 
 import styles from './newArticleCreate.module.scss';
 
@@ -53,7 +54,8 @@ const NewArticleCreate = () => {
     console.log(resultData);
     dispatch(postArticle(resultData)).then((data) => {
       console.log(data);
-      if (data.article.slug) navigate('/articles/created-new');
+      if (data.article.slug) /* navigate('/articles/created-new'); */ dispatch(setCreatedStatus(true));
+      navigate(`/articles/${data.article.slug}`);
       return;
     });
   };

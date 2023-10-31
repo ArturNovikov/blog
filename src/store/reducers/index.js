@@ -8,6 +8,8 @@ import userUpdateReducer from './userUpdateReducer';
 import setUserNameReducer from './setUserNameReducer';
 import setUserImageReducer from './setUserImage';
 import createArticleReducer from './createArticleReducer';
+import setIsUserAuthorReducer from './setIsUserAuthorReducer';
+import setCreatedStatusReducer from './setCreatedStatusReducer';
 
 const rootReducer = combineReducers({
   articles: articleReducer,
@@ -18,6 +20,8 @@ const rootReducer = combineReducers({
   userName: setUserNameReducer,
   userImage: setUserImageReducer,
   createArticle: createArticleReducer,
+  isUserAuthor: setIsUserAuthorReducer,
+  createdStatus: setCreatedStatusReducer,
 });
 
 export default rootReducer;
