@@ -32,8 +32,8 @@ const ArticleAuthor = ({ author, date }) => {
       />
       {isUserAuthorOnOwnPage && (
         <>
-          <button>BTN DELETE</button>
-          <button>BTN EDIT</button>
+          <button className={styles.btnDeleteArt}>Delete</button>
+          <button className={styles.btnEditArt}>Edit</button>
         </>
       )}
     </div>

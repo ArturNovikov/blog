@@ -54,8 +54,11 @@ const NewArticleCreate = () => {
     console.log(resultData);
     dispatch(postArticle(resultData)).then((data) => {
       console.log(data);
-      if (data.article.slug) /* navigate('/articles/created-new'); */ dispatch(setCreatedStatus(true));
-      navigate(`/articles/${data.article.slug}`);
+      if (data.article.slug) {
+        dispatch(setCreatedStatus(true));
+        navigate(`/articles/${data.article.slug}`);
+        return;
+      }
       return;
     });
   };

@@ -180,3 +180,47 @@ $boxShadowStandard: 0px 0.6088px 2.93329px 0px rgba(0, 0, 0, 0.02), 0px 1.46302p
   justify-content: center;
   @include typography-for-invalid-form;
 }
+
+@mixin btnDeleteStyles {
+  @include flex-align-justify-center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  background-color: $backgroundColorBase;
+  border-radius: 4px;
+  border: 1px solid $btnDeleteColor;
+  @include typography-for-delete-btn;
+  transition: transform 0.3s, border 0.3s, font-size 0.3s;
+  &:active {
+    transform: translateY(4px);
+    border: 3px solid $btnDeleteColor;
+    font-size: 17px;
+  }
+  &:hover {
+    border: 3px solid $btnDeleteColor;
+    font-size: 17px;
+  }
+}
+
+@mixin btnAddStyles {
+  @include flex-align-justify-center;
+  justify-content: center;
+  width: 136px;
+  height: 40px;
+  cursor: pointer;
+  background-color: $backgroundColorBase;
+  border-radius: 4px;
+  border: 1px solid $btnAddColor;
+  @include typography-for-add-btn;
+  transition: transform 0.3s, border 0.3s, font-size 0.3s;
+  &:active {
+    transform: translateY(4px);
+    border: 3px solid $btnAddColor;
+    font-size: 17px;
+  }
+  &:hover {
+    border: 3px solid $btnAddColor;
+    font-size: 17px;
+  }
+}

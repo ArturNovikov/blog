@@ -82,47 +82,10 @@
           @include typography-for-content;
         }
         .btnDeleteTag {
-          @include flex-align-justify-center;
-          justify-content: center;
-          width: 120px;
-          height: 40px;
-          cursor: pointer;
-          background-color: $backgroundColorBase;
-          border-radius: 4px;
-          border: 1px solid $btnDeleteColor;
-          @include typography-for-delete-btn;
-          transition: transform 0.3s, border 0.3s, font-size 0.3s;
-          &:active {
-            transform: translateY(4px);
-            border: 3px solid $btnDeleteColor;
-            font-size: 17px;
-          }
-          &:hover {
-            border: 3px solid $btnDeleteColor;
-            font-size: 17px;
-          }
-          
+          @include btnDeleteStyles;    
         }
         .btnAddTag {
-          @include flex-align-justify-center;
-          justify-content: center;
-          width: 136px;
-          height: 40px;
-          cursor: pointer;
-          background-color: $backgroundColorBase;
-          border-radius: 4px;
-          border: 1px solid $btnAddColor;
-          @include typography-for-add-btn;
-          transition: transform 0.3s, border 0.3s, font-size 0.3s;
-          &:active {
-            transform: translateY(4px);
-            border: 3px solid $btnAddColor;
-            font-size: 17px;
-          }
-          &:hover {
-            border: 3px solid $btnAddColor;
-            font-size: 17px;
-          }
+          @include btnAddStyles;
         }
       }
     }
