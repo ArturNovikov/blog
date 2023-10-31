@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Spin, message, Popconfirm } from 'antd';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { formatDate } from '../../utils/formatDate';
+import { deleteArticleAction } from '../../store/actionCreators/fetchDeleteArticle';
 import truncateText from '../../utils/truncateText';
 import cat from '../../assets/images/cat-solid.svg';
-import ApiService from '../../services/apiService';
 
 import styles from './articleAuthor.module.scss';
 
 const ArticleAuthor = ({ author, date }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { slug } = useParams();
   const { username, image } = author;
@@ -28,19 +29,18 @@ const ArticleAuthor = ({ author, date }) => {
     message.info('Article deletion cancelled');
   };
 
-  const apiService = new ApiService();
-
   const deleteArticleBtn = async () => {
-    try {
-      const isDeleted = await apiService.deleteArticle(slug);
-      if (isDeleted) {
-        message.success('Article is successfully deleted');
-        navigate('/');
-      }
-    } catch (error) {
-      console.error(error);
-      message.error('Failed to delete article');
-    }
+    dispatch(deleteArticleAction(slug))
+      .then((data) => {
+        if (data) {
+          message.success('Article is successfully deleted');
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        message.error('Failed to delete article');
+      });
   };
 
   return (

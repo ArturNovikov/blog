@@ -61,11 +61,6 @@ blog/
 │ │ │ ├── articleItem.js
 │ │ │ ├── articleItem.module.scss
 │ │ │ └── index.js
-│ │ ├── DesktopArticleAuthorized/
-│ │ │ ├── desktopArticleAuthorized.js
-│ │ │ ├── desktopArticleAuthorized.module.scss
-│ │ │ ├── index.js
-│ │ │ └── singIn.js
 │ │ ├── DesktopSignIn/
 │ │ │ ├── desktopSignIn.js
 │ │ │ ├── desktopSignIn.module.scss
@@ -99,7 +94,9 @@ blog/
 │ │ │ ├── fetchLoginUser.js
 │ │ │ ├── fetchRegisterUser.js
 │ │ │ ├── fetchUpdateUser.js
-│ │ │ ├── setAuthorized.js
+│ │ │ ├── setCreatedStatus.js
+│ │ │ ├── setIsAuthorized.js
+│ │ │ ├── setIsUserAuthor.js
 │ │ │ ├── setUserImage.js
 │ │ │ └── setUserName.js
 │ │ ├── actions
@@ -110,6 +107,9 @@ blog/
 │ │ │ ├── index.js
 │ │ │ ├── isAuthorisedReducer.js
 │ │ │ ├── loginReducer.js
+│ │ │ ├── setCreatedStatusReducer.js
+│ │ │ ├── setUserAuthorReducer.js
+│ │ │ ├── setUserImage.js
 │ │ │ ├── setUserNameReducer.js
 │ │ │ ├── userRequestReducer.js
 │ │ │ └── userUpdateReducer.js
