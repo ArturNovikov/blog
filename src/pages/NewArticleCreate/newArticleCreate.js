@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { editArticleAction } from '../../store/actionCreators/fetchEditArticle';
 import { postArticle } from '../../store/actionCreators/fetchCreateArticleRequest';
 import { setCreatedStatus } from '../../store/actionCreators/setCreatedStatus';
-import ApiService from '../../services/apiService';
 
 import styles from './newArticleCreate.module.scss';
 
@@ -68,8 +68,6 @@ const NewArticleCreate = () => {
     };
   };
 
-  const apiService = new ApiService();
-
   const onSubmit = async (newArticleData) => {
     if (!editMode) {
       const resultData = articleDataFix(newArticleData);
@@ -84,14 +82,12 @@ const NewArticleCreate = () => {
     } else {
       console.log('EditMode!');
       const resultData = articleDataFix(newArticleData);
-      try {
-        const response = await apiService.updateAnArticle(resultData, slug);
-        const data = await response;
-        if (response) navigate('/');
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
+      dispatch(editArticleAction(resultData, slug)).then((data) => {
+        if (data) {
+          navigate('/');
+          console.log(data);
+        }
+      });
     }
   };
 

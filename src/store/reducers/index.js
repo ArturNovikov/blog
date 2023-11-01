@@ -11,6 +11,7 @@ import createArticleReducer from './createArticleReducer';
 import setIsUserAuthorReducer from './setIsUserAuthorReducer';
 import setCreatedStatusReducer from './setCreatedStatusReducer';
 import deleteArticleReducer from './deleteArticleReducer';
+import editArticleReducer from './editArticleReducer';
 
 const rootReducer = combineReducers({
   articles: articleReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   isUserAuthor: setIsUserAuthorReducer,
   createdStatus: setCreatedStatusReducer,
   deleteArticle: deleteArticleReducer,
+  editArticle: editArticleReducer,
 });
 
 export default rootReducer;
