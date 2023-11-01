@@ -112,7 +112,7 @@ class ApiService {
   }
 
   async postNewArticle(resultData) {
-    console.log('resultData apiService:', resultData);
+    console.log('postNewArticle resultData apiService:', resultData);
     const token = localStorage.getItem('token');
     try {
       const response = await fetch(`${BASE_URL}/articles`, {
@@ -148,6 +148,26 @@ class ApiService {
     } catch (error) {
       console.error('Error in deleteArticle:', error.message);
       throw error;
+    }
+  }
+
+  async updateAnArticle(updateArticleData, slug) {
+    console.log(updateArticleData);
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`${BASE_URL}/articles/${slug}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Token ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ article: updateArticleData }),
+      });
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error('Update article error: ', error);
     }
   }
 }

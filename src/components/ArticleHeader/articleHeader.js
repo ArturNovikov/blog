@@ -13,11 +13,8 @@ const ArticleHeader = ({ title, slug, likes, author }) => {
   const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
   const currentUserName = useSelector((state) => state.userName.userName);
   const { slug: currentSlug } = useParams();
-  console.log('currentUserName: ', currentUserName);
-  console.log('isAuthorised: ', isAuthorised);
   const articleUsername = author.username;
   const maxLength = 50;
-  console.log('ArticleHeader authorUsername: ', articleUsername);
 
   const isUserAuthorOnOwnPage = isAuthorised && currentUserName === articleUsername && slug === currentSlug;
 

@@ -11,17 +11,15 @@ import style from './articleItem.module.scss';
 const ArticleItem = () => {
   const created = useSelector((state) => state.createdStatus.createdStatus);
   const { slug } = useParams();
-  console.log(slug, created);
   const loading = useSelector((state) => (created ? state.createArticle.loading : state.articles.loading));
   const articlesArray = useSelector((state) => (created ? state.createArticle.data : state.articles.data.articles));
-  console.log('articlesArray: ', articlesArray);
 
   if (loading) {
     return <Spin />;
   }
 
   const article = created ? articlesArray : articlesArray.find((article) => article.slug === slug);
-  console.log('article from article item: ', article);
+
   if (!article) {
     return <h1>Статья не найдена!</h1>;
   }

@@ -49,6 +49,14 @@ const App = () => {
               )
             }
           />
+          <Route
+            path="/articles/:slug/edit"
+            element={
+              <Layout>
+                <NewArticleCreate />
+              </Layout>
+            }
+          />
         </Routes>
       </AuthProvider>
     </div>

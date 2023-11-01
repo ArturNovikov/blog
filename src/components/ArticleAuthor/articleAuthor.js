@@ -17,9 +17,10 @@ const ArticleAuthor = ({ author, date }) => {
   const { username, image } = author;
   const [loading, setLoading] = useState(true);
   const isUserAuthorOnOwnPage = useSelector((state) => state.isUserAuthor.isUserAuthor);
-  console.log('Article Header is User Author: ', isUserAuthorOnOwnPage);
 
-  console.log('ArticleAuthor date: ', date);
+  const handleEdit = () => {
+    navigate(`/articles/${slug}/edit`);
+  };
 
   const confirm = () => {
     deleteArticleBtn();
@@ -72,7 +73,9 @@ const ArticleAuthor = ({ author, date }) => {
           >
             <button className={styles.btnDeleteArt}>Delete</button>
           </Popconfirm>
-          <button className={styles.btnEditArt}>Edit</button>
+          <button className={styles.btnEditArt} onClick={handleEdit}>
+            Edit
+          </button>
         </>
       )}
     </div>
