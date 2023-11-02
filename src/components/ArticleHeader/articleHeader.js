@@ -8,7 +8,7 @@ import truncateText from '../../utils/truncateText';
 
 import styles from './articleHeader.module.scss';
 
-const ArticleHeader = ({ title, slug, likes, author }) => {
+const ArticleHeader = ({ title, slug, likes, author, favorited }) => {
   const dispatch = useDispatch();
   const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
   const currentUserName = useSelector((state) => state.userName.userName);
@@ -27,7 +27,7 @@ const ArticleHeader = ({ title, slug, likes, author }) => {
       <Link to={`/articles/${slug}`}>
         <h2 className={styles.articleHeader__title}>{truncateText(title, maxLength)}</h2>
       </Link>
-      <LikeIcon slug={slug} favoritesCount={likes} />
+      <LikeIcon slug={slug} favoritesCount={likes} favorited={favorited} />
     </div>
   );
 };

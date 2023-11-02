@@ -2,11 +2,24 @@ const BASE_URL = 'https://blog.kata.academy/api/';
 
 class ApiService {
   async getGlobalArticles(pageNumber = 1) {
+    const token = localStorage.getItem('token');
     const offset = (pageNumber - 1) * 20;
     try {
-      const response = await fetch(`${BASE_URL}/articles?offset=${offset}`);
-      const data = await response.json();
-      return data;
+      if (!token) {
+        const response = await fetch(`${BASE_URL}/articles?offset=${offset}`);
+        const data = await response.json();
+        return data;
+      } else {
+        const response = await fetch(`${BASE_URL}/articles?offset=${offset}`, {
+          method: 'GET',
+          headers: {
+            Authorization: `Token ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        const data = await response.json();
+        return data;
+      }
     } catch (error) {
       throw new Error(`Server responded with a status: ${error.message}`);
     }
@@ -168,6 +181,42 @@ class ApiService {
       return data;
     } catch (error) {
       console.error('Update article error: ', error);
+    }
+  }
+
+  async toggleFavoriteArticle(slug) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Authentication token is not available.');
+    }
+    try {
+      const responseForAuth = await fetch(`${BASE_URL}/articles/${slug}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      if (!responseForAuth.ok) {
+        throw new Error(`Error in response with status: ${responseForAuth.status}`);
+      }
+      const dataForAuth = await responseForAuth.json();
+      if (!dataForAuth || !dataForAuth.article) {
+        throw new Error('Article data is not available in the response.');
+      }
+      const method = dataForAuth.article.favorited ? 'DELETE' : 'POST';
+      const response = await fetch(`${BASE_URL}/articles/${slug}/favorite`, {
+        method,
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Error favoriting article with status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error toggling article favorite status:', error);
+      throw error;
     }
   }
 }

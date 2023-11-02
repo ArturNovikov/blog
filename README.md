@@ -1,7 +1,8 @@
 blog/
 ├── husky/
-│ │ ├── .gitignore
-│ │ └── husky.sh
+│ │ ├── _
+│ │ │ ├── .gitignore
+│ │ │ └── husky.sh
 │ └── pre-commit
 ├── node_modules/
 ├── public/
@@ -14,6 +15,7 @@ blog/
 │ │ ├── images/
 │ │ │ ├── cat-solid.svg
 │ │ │ ├── heart 1.svg
+│ │ │ ├── red-heart 1.svg
 │ │ │ └── skull-crossbones-solid.svg
 │ ├── components/
 │ │ ├── App/
@@ -63,12 +65,12 @@ blog/
 │ │ │ └── index.js
 │ │ ├── DesktopSignIn/
 │ │ │ ├── desktopSignIn.js
-│ │ │ ├── desktopSignIn.module.scss
+│ │ │ ├── signIn.module.scss
 │ │ │ ├── index.js
 │ │ │ └── singIn.js
 │ │ ├── DesktopSignUp/
 │ │ │ ├── desktopSignUp.js
-│ │ │ ├── desktopSignUp.module.scss
+│ │ │ ├── signUp.module.scss
 │ │ │ ├── index.js
 │ │ │ └── signUp.js
 │ │ ├── DesktopUpdateUser/
@@ -76,10 +78,6 @@ blog/
 │ │ │ ├── desktopUpdateUser.module.scss
 │ │ │ ├── index.js
 │ │ │ └── update.js
-│ │ ├── DesktopEditProfile/
-│ │ │ ├── desktopEditProfile.js
-│ │ │ ├── desktopEditProfile.module.scss
-│ │ │ └── index.js
 │ │ ├── NewArticleCreate/
 │ │ │ ├── newArticleCreate.js
 │ │ │ ├── newArticleCreate.module.scss
@@ -91,12 +89,15 @@ blog/
 │ │ ├── actionCreators
 │ │ │ ├── fetchArticleGlobally.js'
 │ │ │ ├── fetchCreateArticleRequest.js
+│ │ │ ├── fetchDeleteArticle.js
+│ │ │ ├── fetchEditArticle.js
 │ │ │ ├── fetchLoginUser.js
 │ │ │ ├── fetchRegisterUser.js
 │ │ │ ├── fetchUpdateUser.js
 │ │ │ ├── setCreatedStatus.js
 │ │ │ ├── setIsAuthorized.js
 │ │ │ ├── setIsUserAuthor.js
+│ │ │ ├── setLikeArticle.js
 │ │ │ ├── setUserImage.js
 │ │ │ └── setUserName.js
 │ │ ├── actions
@@ -104,11 +105,14 @@ blog/
 │ │ ├── reducers
 │ │ │ ├── articlesReducer.js
 │ │ │ ├── createArticleReducer.js
+│ │ │ ├── deleteArticleReducer.js
+│ │ │ ├── editArticleReducer.js
 │ │ │ ├── index.js
 │ │ │ ├── isAuthorisedReducer.js
 │ │ │ ├── loginReducer.js
 │ │ │ ├── setCreatedStatusReducer.js
 │ │ │ ├── setUserAuthorReducer.js
+│ │ │ ├── setLikeArticleReducer.js
 │ │ │ ├── setUserImage.js
 │ │ │ ├── setUserNameReducer.js
 │ │ │ ├── userRequestReducer.js
@@ -117,12 +121,11 @@ blog/
 │ ├── styles/
 │ │ └── global.scss
 │ ├── utils/
+│ │ ├── configSettings.js
 │ │ ├── formatDate.js
-│ │ ├── truncateText.js
-│ │ └── ...
-│ ├── index.scss
+│ │ └── truncateText.js
 │ ├── index.js
-│ └── ...
+│ └── index.scss
 ├── .eslintrc.json
 ├── .gitignore
 ├── .prettierrc
