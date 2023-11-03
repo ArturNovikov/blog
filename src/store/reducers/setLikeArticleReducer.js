@@ -7,7 +7,6 @@ const initialState = {
 const setLikeArticleReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LIKE_ARTICLE:
-      console.log('Set like article FAVORITED reducer: ', action.payload);
       return {
         ...state,
         favorited: action.payload,

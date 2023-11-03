@@ -21,10 +21,8 @@ const NewArticleCreate = () => {
   const dataFindForEdit = useSelector((state) => state.articles.data);
 
   useEffect(() => {
-    console.log('Edit mode: ', editMode);
     if (editMode && dataFindForEdit && slug) {
       const articleForEdit = dataFindForEdit.articles.find((article) => article.slug === slug);
-      console.log('articleForEdit: ', articleForEdit);
       if (articleForEdit) {
         reset({
           title: articleForEdit.title,
@@ -61,7 +59,6 @@ const NewArticleCreate = () => {
   };
 
   const articleDataFix = (newArticleData) => {
-    console.log(newArticleData);
     return {
       title: newArticleData.title,
       description: newArticleData.shortDescription,
@@ -82,14 +79,12 @@ const NewArticleCreate = () => {
         return;
       });
     } else {
-      console.log('EditMode!');
       const resultData = articleDataFix(newArticleData);
       dispatch(editArticleAction(resultData, slug)).then((data) => {
         if (data) {
           dispatch(fetchArticles(currentPage));
           dispatch(setCreatedStatus(true));
           navigate('/');
-          console.log('EditMode active data: ', data);
         }
       });
     }

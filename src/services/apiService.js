@@ -125,7 +125,6 @@ class ApiService {
   }
 
   async postNewArticle(resultData) {
-    console.log('postNewArticle resultData apiService:', resultData);
     const token = localStorage.getItem('token');
     try {
       const response = await fetch(`${BASE_URL}/articles`, {
@@ -137,7 +136,6 @@ class ApiService {
         body: JSON.stringify({ article: resultData }),
       });
       const data = await response.json();
-      console.log('Data from post article apiService: ', data);
       return data;
     } catch (error) {
       console.error('Post article error: ', error.message);
@@ -145,7 +143,6 @@ class ApiService {
   }
 
   async deleteArticle(deleteData) {
-    console.log(deleteData);
     const token = localStorage.getItem('token');
     try {
       const response = await fetch(`${BASE_URL}/articles/${deleteData}`, {
@@ -165,7 +162,6 @@ class ApiService {
   }
 
   async updateAnArticle(updateArticleData, slug) {
-    console.log(updateArticleData);
     const token = localStorage.getItem('token');
     try {
       const response = await fetch(`${BASE_URL}/articles/${slug}`, {
@@ -177,7 +173,6 @@ class ApiService {
         body: JSON.stringify({ article: updateArticleData }),
       });
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       console.error('Update article error: ', error);

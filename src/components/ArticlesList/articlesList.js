@@ -19,13 +19,6 @@ const ArticlesList = ({ className }) => {
   const error = useSelector((state) => state.articles.error);
 
   useEffect(() => {
-    console.log(
-      'Data from article List: ',
-      data && data.articles && Array.isArray(data.articles) && data.articles.map((article) => article.author.username)
-    );
-  }, [data]);
-
-  useEffect(() => {
     if (!paginationLoading) {
       dispatch(fetchArticles(currentPage));
     }

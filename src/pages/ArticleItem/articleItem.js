@@ -22,9 +22,6 @@ const ArticleItem = () => {
   useEffect(() => {
     dispatch(fetchArticles(currentPage));
     dispatch(setCreatedStatus(false));
-    console.log('createdStatus from article ITEM: ', created);
-    console.log('articlesArray from article ITEM: ', articlesArray);
-    console.log('article from article ITEM: ', article);
   }, [created]);
 
   if (!article) {

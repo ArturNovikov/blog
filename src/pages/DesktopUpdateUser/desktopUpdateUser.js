@@ -7,7 +7,6 @@ import Update from './update';
 
 const desktopUpdateUser = () => {
   const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
-  console.log(isAuthorised);
   return (
     <>
       <Header isAuthorised={isAuthorised} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Spin, message, Popconfirm } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -12,10 +12,6 @@ import { fetchArticles } from '../../store/actionCreators/fetchArticleGlobally';
 import styles from './articleAuthor.module.scss';
 
 const ArticleAuthor = ({ author, date }) => {
-  useEffect(() => {
-    console.log('Article Author; ', author);
-  }, [author]);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { slug } = useParams();

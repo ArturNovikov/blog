@@ -12,7 +12,6 @@ export const setLikeArticleAction = (slug) => async (dispatch) => {
   try {
     const response = await apiService.toggleFavoriteArticle(slug);
     dispatch(setLikeArticle(response.article.favorited));
-    console.log(response.article.favorited);
     return response.article.favorited;
   } catch (error) {
     console.error('Error dispatching like: ', error);
