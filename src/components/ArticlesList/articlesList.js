@@ -14,9 +14,16 @@ const ArticlesList = ({ className }) => {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.articles.data);
-  const error = useSelector((state) => state.articles.error);
   const currentPage = useSelector((state) => state.articles.currentPage);
   const isFavorited = useSelector((state) => state.likeArticle.favorited);
+  const error = useSelector((state) => state.articles.error);
+
+  useEffect(() => {
+    console.log(
+      'Data from article List: ',
+      data && data.articles && Array.isArray(data.articles) && data.articles.map((article) => article.author.username)
+    );
+  }, [data]);
 
   useEffect(() => {
     if (!paginationLoading) {

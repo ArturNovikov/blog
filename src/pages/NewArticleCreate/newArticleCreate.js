@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { editArticleAction } from '../../store/actionCreators/fetchEditArticle';
 import { postArticle } from '../../store/actionCreators/fetchCreateArticleRequest';
 import { setCreatedStatus } from '../../store/actionCreators/setCreatedStatus';
+import { fetchArticles } from '../../store/actionCreators/fetchArticleGlobally';
 
 import styles from './newArticleCreate.module.scss';
 
@@ -15,22 +16,9 @@ const NewArticleCreate = () => {
   const { slug } = useParams();
   const editMode = slug !== undefined;
 
+  const currentPage = useSelector((state) => state.articles.currentPage);
   const articleFromRedux = useSelector((state) => state.createArticle.data);
   const dataFindForEdit = useSelector((state) => state.articles.data);
-
-  const { register, handleSubmit, control, reset } = useForm({
-    defaultValues: {
-      title: '',
-      description: '',
-      text: '',
-      tags: [{ value: '' }],
-    },
-  });
-
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: 'tags',
-  });
 
   useEffect(() => {
     console.log('Edit mode: ', editMode);
@@ -47,6 +35,20 @@ const NewArticleCreate = () => {
       }
     }
   }, [articleFromRedux, editMode, slug, dataFindForEdit]);
+
+  const { register, handleSubmit, control, reset } = useForm({
+    defaultValues: {
+      title: '',
+      description: '',
+      text: '',
+      tags: [{ value: '' }],
+    },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'tags',
+  });
 
   const addTag = () => {
     if (fields.length >= 10) return;
@@ -84,8 +86,10 @@ const NewArticleCreate = () => {
       const resultData = articleDataFix(newArticleData);
       dispatch(editArticleAction(resultData, slug)).then((data) => {
         if (data) {
+          dispatch(fetchArticles(currentPage));
+          dispatch(setCreatedStatus(true));
           navigate('/');
-          console.log(data);
+          console.log('EditMode active data: ', data);
         }
       });
     }

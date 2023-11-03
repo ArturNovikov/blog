@@ -1,5 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import { AuthProvider } from '../../services/AuthProvider';
 import Layout from '../Layout';
@@ -13,6 +14,15 @@ import NewArticleCreate from '../../pages/NewArticleCreate';
 import styles from './App.module.scss';
 
 const App = () => {
+  const [key, setKey] = useState(Date.now());
+  const location = useLocation();
+
+  useEffect(() => {
+    if (key && location.pathname === '/') {
+      setKey(Date.now());
+    }
+  }, [location]);
+
   const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
   return (
     <div className={styles.container}>

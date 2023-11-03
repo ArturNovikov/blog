@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Spin, message, Popconfirm } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,18 +7,25 @@ import { formatDate } from '../../utils/formatDate';
 import { deleteArticleAction } from '../../store/actionCreators/fetchDeleteArticle';
 import truncateText from '../../utils/truncateText';
 import cat from '../../assets/images/cat-solid.svg';
+import { fetchArticles } from '../../store/actionCreators/fetchArticleGlobally';
 
 import styles from './articleAuthor.module.scss';
 
 const ArticleAuthor = ({ author, date }) => {
+  useEffect(() => {
+    console.log('Article Author; ', author);
+  }, [author]);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { slug } = useParams();
   const { username, image } = author;
   const [loading, setLoading] = useState(true);
   const isUserAuthorOnOwnPage = useSelector((state) => state.isUserAuthor.isUserAuthor);
+  const currentPage = useSelector((state) => state.articles.currentPage);
 
   const handleEdit = () => {
+    dispatch(fetchArticles(currentPage));
     navigate(`/articles/${slug}/edit`);
   };
 
