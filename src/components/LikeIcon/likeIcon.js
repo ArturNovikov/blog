@@ -13,11 +13,13 @@ const LikeIcon = ({ slug, favoritesCount, favorited }) => {
   const isAuthorised = useSelector((state) => state.isAuthorised.isAuthorised);
   const currentPage = useSelector((state) => state.articles.currentPage);
   const createdStatus = useSelector((state) => state.createdStatus.createdStatus);
+  const isFavorited = useSelector((state) => state.likeArticle.favorited);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchArticles(currentPage));
-  }, [isAuthorised, createdStatus]);
+    dispatch(getArticleWithSlugAction(slug));
+  }, [isAuthorised, createdStatus, isFavorited]);
 
   const handleLikeClick = () => {
     dispatch(getArticleWithSlugAction(slug));
