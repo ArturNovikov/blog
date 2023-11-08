@@ -1,4 +1,4 @@
-vercel link: https://blog-eh6skf8ud-arturnovikov.vercel.app
+vercel link: https://blog-rmqm8h57m-arturnovikov.vercel.app/
 
 blog/
 ├── husky/
