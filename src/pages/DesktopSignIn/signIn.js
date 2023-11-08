@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { loginUser } from '../../store/actionCreators/fetchLoginUser';
 import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
+import { HOME, SIGN_UP } from '../../utils/routes';
 
 import styles from './signIn.module.scss';
 
@@ -27,7 +28,7 @@ const SignIn = () => {
         if (response.user.token) {
           localStorage.setItem('token', response.user.token);
           dispatch(setIsAuthorised(true));
-          navigate('/');
+          navigate(HOME);
         }
       })
       .catch(({ error, status }) => {
@@ -77,7 +78,7 @@ const SignIn = () => {
         <button type="submit">Login</button>
       </form>
       <div className={styles.alternative}>
-        Do not have an account? <Link to="/sign-up">Sign Up</Link>
+        Do not have an account? <Link to={SIGN_UP}>Sign Up</Link>
       </div>
       {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
     </div>

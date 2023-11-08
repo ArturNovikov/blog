@@ -13,6 +13,7 @@ import setCreatedStatusReducer from './setCreatedStatusReducer';
 import deleteArticleReducer from './deleteArticleReducer';
 import editArticleReducer from './editArticleReducer';
 import setLikeArticleReducer from './setLikeArticleReducer';
+import fetchArticleWithSlugReducer from './getArticleWithSlugReducer';
 
 const rootReducer = combineReducers({
   articles: articleReducer,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   deleteArticle: deleteArticleReducer,
   editArticle: editArticleReducer,
   likeArticle: setLikeArticleReducer,
+  articleWithSlug: fetchArticleWithSlugReducer,
 });
 
 export default rootReducer;

@@ -22,7 +22,7 @@ const ArticlesList = ({ className }) => {
     if (!paginationLoading) {
       dispatch(fetchArticles(currentPage));
     }
-  }, [currentPage, isFavorited]);
+  }, [currentPage, isFavorited, paginationLoading]);
 
   const handlePageChange = (pageNumber) => {
     setPaginationLoading(true);

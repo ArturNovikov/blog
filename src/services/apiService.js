@@ -179,6 +179,23 @@ class ApiService {
     }
   }
 
+  async getAnArticle(slug) {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`${BASE_URL}/articles/${slug}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Token ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw error.message;
+    }
+  }
+
   async toggleFavoriteArticle(slug) {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -206,7 +223,7 @@ class ApiService {
         },
       });
       if (!response.ok) {
-        throw new Error(`Error favoriting article with status: ${response.status}`);
+        throw new Error(`Error favoring article with status: ${response.status}`);
       }
       return await response.json();
     } catch (error) {

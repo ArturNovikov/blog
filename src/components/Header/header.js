@@ -6,6 +6,7 @@ import { setCurrentPage } from '../../store/actionCreators/fetchArticleGlobally'
 import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
 import { setCreatedStatus } from '../../store/actionCreators/setCreatedStatus';
 import skull from '../../assets/images/skull-crossbones-solid.svg';
+import { HOME, NEW_ARTICLE, PROFILE, SIGN_IN, SIGN_UP } from '../../utils/routes';
 
 import styles from './header.module.scss';
 
@@ -29,22 +30,22 @@ const Header = ({ isAuthorised }) => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     dispatch(setIsAuthorised(false));
-    navigate('/');
+    navigate(HOME);
   };
 
   return (
     <header className={styles.header}>
-      <Link to="/" onClick={handleRealworldBlogClick}>
+      <Link to={HOME} onClick={handleRealworldBlogClick}>
         <h1 className={styles.title}>Realworld Blog</h1>
       </Link>
       <div className={styles.authButtons}>
         {isAuthorised ? (
           <>
-            <Link to="/new-article" onClick={handleOnClickCreateArticle}>
+            <Link to={NEW_ARTICLE} onClick={handleOnClickCreateArticle}>
               <button className={styles.btnCreateArticle}>Create article</button>
             </Link>
             <div className={styles.userContainer}>
-              <Link to="/profile" className={styles.userName}>
+              <Link to={PROFILE} className={styles.userName}>
                 {name}
               </Link>
               <img className={styles.userImg} src={userImage || skull} alt="user" />
@@ -55,10 +56,10 @@ const Header = ({ isAuthorised }) => {
           </>
         ) : (
           <>
-            <Link to="/sign-in" className={styles.btnSingIn}>
+            <Link to={SIGN_IN} className={styles.btnSingIn}>
               Sign In
             </Link>
-            <Link to="/sign-up" className={styles.btnSingUp}>
+            <Link to={SIGN_UP} className={styles.btnSingUp}>
               Sign Up
             </Link>
           </>

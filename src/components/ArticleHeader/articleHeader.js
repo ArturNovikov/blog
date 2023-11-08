@@ -6,6 +6,7 @@ import { setIsUserAuthor } from '../../store/actionCreators/setIsUserAuthor';
 import LikeIcon from '../LikeIcon/likeIcon';
 import truncateText from '../../utils/truncateText';
 import { fetchArticles } from '../../store/actionCreators/fetchArticleGlobally';
+import { ARTICLE } from '../../utils/routes';
 
 import styles from './articleHeader.module.scss';
 
@@ -26,11 +27,11 @@ const ArticleHeader = ({ title, slug, likes, author, favorited }) => {
 
   useEffect(() => {
     dispatch(setIsUserAuthor(isUserAuthorOnOwnPage));
-  }, [isAuthorised, currentUserName, articleUsername, slug, currentSlug, dispatch]);
+  }, [isUserAuthorOnOwnPage]);
 
   return (
     <div className={styles.articleHeader}>
-      <Link to={`/articles/${slug}`} onClick={handleLinkTo}>
+      <Link to={ARTICLE.replace(':slug', slug)} onClick={handleLinkTo}>
         <h2 className={styles.articleHeader__title}>{truncateText(title, maxLength)}</h2>
       </Link>
       <LikeIcon slug={slug} favoritesCount={likes} favorited={favorited} />

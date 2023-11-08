@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { setIsAuthorised } from '../../store/actionCreators/setIsAuthorized';
 import { registerUser } from '../../store/actionCreators/fetchRegisterUser';
+import { HOME, SIGN_IN } from '../../utils/routes';
 
 import styles from './signUp.module.scss';
 
@@ -28,7 +29,7 @@ const SignUp = () => {
         if (data.user.token) {
           localStorage.setItem('token', data.user.token);
           dispatch(setIsAuthorised(true));
-          navigate('/');
+          navigate(HOME);
         }
       })
       .catch(({ error, status }) => {
@@ -127,7 +128,7 @@ const SignUp = () => {
         <button type="submit">Create</button>
       </form>
       <div className={styles.alternative}>
-        Already have an account? <Link to="/sign-in">Sign In</Link>
+        Already have an account? <Link to={SIGN_IN}>Sign In</Link>
       </div>
       {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
     </div>

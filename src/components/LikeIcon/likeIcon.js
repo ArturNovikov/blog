@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setLikeArticleAction } from '../../store/actionCreators/setLikeArticle';
-import { fetchArticles } from '../../store/actionCreators/fetchArticleGlobally';
+import { fetchArticles, fetchArticlesGloballyError } from '../../store/actionCreators/fetchArticleGlobally';
 import heart from '../../assets/images/heart 1.svg';
 import redHeart from '../../assets/images/red-heart.svg';
+import { getArticleWithSlugAction } from '../../store/actionCreators/fetchArticleWithSlug';
 
 import styles from './likeIcon.module.scss';
 
@@ -19,13 +20,14 @@ const LikeIcon = ({ slug, favoritesCount, favorited }) => {
   }, [isAuthorised, createdStatus]);
 
   const handleLikeClick = () => {
+    dispatch(getArticleWithSlugAction(slug));
     if (!isAuthorised) return;
     dispatch(setLikeArticleAction(slug))
       .then(() => {
         dispatch(fetchArticles(currentPage));
       })
       .catch((error) => {
-        console.error(error);
+        dispatch(fetchArticlesGloballyError(error));
       });
   };
 

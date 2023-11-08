@@ -7,6 +7,7 @@ import { editArticleAction } from '../../store/actionCreators/fetchEditArticle';
 import { postArticle } from '../../store/actionCreators/fetchCreateArticleRequest';
 import { setCreatedStatus } from '../../store/actionCreators/setCreatedStatus';
 import { fetchArticles } from '../../store/actionCreators/fetchArticleGlobally';
+import { ARTICLE, HOME } from '../../utils/routes';
 
 import styles from './newArticleCreate.module.scss';
 
@@ -72,8 +73,10 @@ const NewArticleCreate = () => {
       const resultData = articleDataFix(newArticleData);
       dispatch(postArticle(resultData)).then((data) => {
         if (data.article.slug) {
+          const newSlug = data.article.slug;
           dispatch(setCreatedStatus(true));
-          navigate(`/articles/${data.article.slug}`);
+          dispatch(fetchArticles(currentPage));
+          navigate(ARTICLE.replace(':slug', newSlug));
           return;
         }
         return;
@@ -84,7 +87,7 @@ const NewArticleCreate = () => {
         if (data) {
           dispatch(fetchArticles(currentPage));
           dispatch(setCreatedStatus(true));
-          navigate('/');
+          navigate(HOME);
         }
       });
     }

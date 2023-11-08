@@ -8,6 +8,7 @@ import { deleteArticleAction } from '../../store/actionCreators/fetchDeleteArtic
 import truncateText from '../../utils/truncateText';
 import cat from '../../assets/images/cat-solid.svg';
 import { fetchArticles } from '../../store/actionCreators/fetchArticleGlobally';
+import { EDIT_ARTICLE, HOME } from '../../utils/routes';
 
 import styles from './articleAuthor.module.scss';
 
@@ -22,7 +23,7 @@ const ArticleAuthor = ({ author, date }) => {
 
   const handleEdit = () => {
     dispatch(fetchArticles(currentPage));
-    navigate(`/articles/${slug}/edit`);
+    navigate(EDIT_ARTICLE.replace(':slug', slug));
   };
 
   const confirm = () => {
@@ -38,7 +39,7 @@ const ArticleAuthor = ({ author, date }) => {
       .then((data) => {
         if (data) {
           message.success('Article is successfully deleted');
-          navigate('/');
+          navigate(HOME);
         }
       })
       .catch((error) => {

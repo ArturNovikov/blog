@@ -2,6 +2,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
+import { SIGN_IN, SIGN_UP, PROFILE, ARTICLE, HOME, NEW_ARTICLE, EDIT_ARTICLE } from '../../utils/routes';
 import { AuthProvider } from '../../services/AuthProvider';
 import Layout from '../Layout';
 import ArticlesList from '../ArticlesList';
@@ -10,6 +11,7 @@ import DesktopSignIn from '../../pages/DesktopSignIn';
 import DesktopUpdateUser from '../../pages/DesktopUpdateUser';
 import ArticleItem from '../../pages/ArticleItem';
 import NewArticleCreate from '../../pages/NewArticleCreate';
+import PrivateRoute from '../../services/PrivateRoute';
 
 import styles from './App.module.scss';
 
@@ -18,7 +20,7 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (key && location.pathname === '/') {
+    if (key && location.pathname === HOME) {
       setKey(Date.now());
     }
   }, [location]);
@@ -28,11 +30,18 @@ const App = () => {
     <div className={styles.container}>
       <AuthProvider>
         <Routes>
-          <Route path="/sign-in" element={<DesktopSignIn />} />
-          <Route path="/sign-up" element={<DesktopSignUp />} />
-          <Route path="/profile" element={<DesktopUpdateUser />} />
+          <Route path={SIGN_IN} element={<DesktopSignIn />} />
+          <Route path={SIGN_UP} element={<DesktopSignUp />} />
           <Route
-            path="/articles/:slug"
+            path={PROFILE}
+            element={
+              <PrivateRoute>
+                <DesktopUpdateUser />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={ARTICLE}
             element={
               <Layout>
                 <ArticleItem />
@@ -40,7 +49,7 @@ const App = () => {
             }
           />
           <Route
-            path="/"
+            path={HOME}
             element={
               <Layout>
                 <ArticlesList />
@@ -48,7 +57,7 @@ const App = () => {
             }
           />
           <Route
-            path="/new-article"
+            path={NEW_ARTICLE}
             element={
               isAuthorised ? (
                 <Layout>
@@ -60,7 +69,7 @@ const App = () => {
             }
           />
           <Route
-            path="/articles/:slug/edit"
+            path={EDIT_ARTICLE}
             element={
               <Layout>
                 <NewArticleCreate />
